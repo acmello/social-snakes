@@ -103,31 +103,31 @@ function Game(){
   };
 
   this.keyBoardHandler = function(){
-    if(!allowKeys){
-      return false;
-    }else{
       $(document).bind('keypress', function(ev){
         var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
         switch(keyCode){
           case 119:
+            if(_dir === 'down') { return false; }
             _dir = 'up';
             _game.moveUp();
             break;
           case 97:
+            if(_dir === 'right') { return false; }
             _dir = 'left';
             _game.moveLeft();
             break;
-          case 115: 
+          case 115:
+            if(_dir === 'up') { return false; } 
             _dir = 'down';
             _game.moveDown();
             break;
           case 100:
+            if(_dir === 'left') { return false; }
             _dir = 'right';
             _game.moveRight();
             break;
         }
-      });
-    }  
+     }); 
   };
 
   this.generateRandomFood = function(){
@@ -159,7 +159,7 @@ function Game(){
 
   this.gameOver = function(){
     clearInterval(loop);
-    console.log("allowKeys " + allowKeys);
+    $(document).unbind('keypress');
     _game.showMessage();
     _game.restoreDefault(); 
     _ctx.clearRect(_currentFoodPos['x'],_currentFoodPos['y'], _gridsize, _gridsize);
@@ -184,7 +184,7 @@ function Game(){
         resizable: false,
         modal: true,
         buttons: {
-          Yeah: function() {
+          Yeah : function() {
             $( this ).dialog("close");
             _game.init();
           },
@@ -199,6 +199,8 @@ function Game(){
   this.restoreDefault = function(){
     _currentPos['x'] = 10;
     _currentPos['y'] = 10;
+    length = 3;
+    score = 0;
     _dir = 'right';
   };
 }
