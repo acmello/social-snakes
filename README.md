@@ -1,2 +1,2 @@
-fb-snake
+Social-Snake ready to go!
 ========
