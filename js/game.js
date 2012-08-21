@@ -10,15 +10,16 @@ function Game(){
   var loop;
   var allowKeys = true;
   var length = 3;
+  var score = 0;
 
   this.init = function(){
     _canvas = document.getElementById("canvas");
     _ctx = _canvas.getContext ? _canvas.getContext("2d") : null;
-  
     _game.start();
   };
   
   this.start = function(){
+    $("#score").text("Score : " + score);
     _game.drawSnake();
     _game.generateRandomFood();
     _game.playGame();
@@ -26,7 +27,8 @@ function Game(){
   
   this.drawSnake = function(){
     snakeBody.push([_currentPos['x'],_currentPos['y']]);
-    _ctx.fillStyle = 'rgb(200,0,0)';    
+    //_ctx.fillStyle = 'rgb(200,0,0)';    
+    _ctx.fillStyle = 'rgb(59, 89, 152)';
     _ctx.fillRect(_currentPos['x'],_currentPos['y'], _gridsize, _gridsize);   
     if(snakeBody.length > length){
       var itemRemoved = snakeBody.shift();
@@ -62,8 +64,8 @@ function Game(){
     if(_currentPos['x'] < (canvas.width - _gridsize)){
       _currentPos['x'] = _currentPos['x'] + _gridsize;
     }
-    console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
-    console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
+    //console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
+    //console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
     _game.drawSnake();   
   };
 
@@ -73,8 +75,8 @@ function Game(){
     if(_currentPos['x'] > 0){
       _currentPos['x'] = _currentPos['x'] - _gridsize;
     }
-    console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
-    console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
+   //console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
+    //console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
     _game.drawSnake();   
   };
 
@@ -84,8 +86,8 @@ function Game(){
     if(_currentPos['y'] > 0){
       _currentPos['y'] = _currentPos['y'] - _gridsize;
     }
-    console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
-    console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
+    //console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
+    //console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
     _game.drawSnake();   
   };
 
@@ -95,33 +97,37 @@ function Game(){
     if(_currentPos['y'] < (canvas.height - _gridsize)){
       _currentPos['y'] = _currentPos['y'] + _gridsize;
     }
-    console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
-    console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
+    //console.log("SNAKE (X|Y) " + _currentPos['x'] + "," + _currentPos['y']);
+    //console.log("FOOD  (X|Y) " + _currentFoodPos['x'] + "," + _currentFoodPos['y']);
     _game.drawSnake();   
   };
 
   this.keyBoardHandler = function(){
-    $(document).bind('keypress', function(ev){
-      var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-      switch(keyCode){
-        case 119:
-          _dir = 'up';
-          _game.moveUp();
-          break;
-        case 97:
-          _dir = 'left';
-          _game.moveLeft();
-          break;
-        case 115: 
-          _dir = 'down';
-          _game.moveDown();
-          break;
-        case 100:
-          _dir = 'right';
-          _game.moveRight();
-          break;
-      }
-    });
+    if(!allowKeys){
+      return false;
+    }else{
+      $(document).bind('keypress', function(ev){
+        var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+        switch(keyCode){
+          case 119:
+            _dir = 'up';
+            _game.moveUp();
+            break;
+          case 97:
+            _dir = 'left';
+            _game.moveLeft();
+            break;
+          case 115: 
+            _dir = 'down';
+            _game.moveDown();
+            break;
+          case 100:
+            _dir = 'right';
+            _game.moveRight();
+            break;
+        }
+      });
+    }  
   };
 
   this.generateRandomFood = function(){
@@ -142,6 +148,7 @@ function Game(){
   this.detectCollision = function(){
     if(_currentPos['x'] === _currentFoodPos['x'] && _currentPos['y'] === _currentFoodPos['y']){
       _game.generateRandomFood();
+      _game.increaseScore();
       length++; 
     }else if(_currentPos['x'] === 0 || _currentPos['y'] === 0){
       _game.gameOver();
@@ -151,9 +158,48 @@ function Game(){
   };
 
   this.gameOver = function(){
-    clearInterval(loop); 
+    clearInterval(loop);
+    console.log("allowKeys " + allowKeys);
+    _game.showMessage();
+    _game.restoreDefault(); 
+    _ctx.clearRect(_currentFoodPos['x'],_currentFoodPos['y'], _gridsize, _gridsize);
+    for(var i = 0; i <= length; i++){
+      var itemRemoved = snakeBody.shift();
+      _ctx.clearRect(itemRemoved[0],itemRemoved[1], _gridsize, _gridsize);  
+    }
+  };
+
+  this.increaseScore = function(){
+    score += 10;
+    $("#score").text("Score : " + score);
+  };
+
+  this.showMessage = function(){
     allowKeys = false;
-    alert("FUCKING ASSHOLE! The game IS OVER!");
+    $(function() {
+      $("#dialog-message").dialog({
+        title: "Social Snake say :",
+        width: 290,
+        height: 200,
+        resizable: false,
+        modal: true,
+        buttons: {
+          Yeah: function() {
+            $( this ).dialog("close");
+            _game.init();
+          },
+          Nope : function() {
+            $( this ).dialog("close");
+          }
+        } 
+      });
+    }); 
+  };
+
+  this.restoreDefault = function(){
+    _currentPos['x'] = 10;
+    _currentPos['y'] = 10;
+    _dir = 'right';
   };
 }
 
