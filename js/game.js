@@ -5,7 +5,7 @@ function Game(){
   var _currentPos = {'x': 10, 'y': 10};
   var _currentFoodPos = {'x': 30, 'y': 30};
   var _game = this;
-  var _randomList = [10, 40, 80, 90, 70, 200, 300, 140, 220, 180, 200];
+  var _randomList = [10, ,20, 40, 80, 90, 70, 200, 300, 140, 220, 180, 260];
   var snakeBody = [];
   var loop;
   var allowKeys = true;
