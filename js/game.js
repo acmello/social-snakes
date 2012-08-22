@@ -131,6 +131,7 @@ function Game(){
   };
 
   this.generateRandomFood = function(){
+    // better solution :)
     var x = Math.floor(Math.random()*(_canvas.width/_gridsize))*_gridsize;
     var y = Math.floor(Math.random()*(_canvas.width/_gridsize))*_gridsize;
     
