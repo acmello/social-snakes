@@ -171,8 +171,6 @@ function Game(){
     
     _game.restoreDefault();
     _game.showMessage();
-    
-    
   };
 
   this.increaseScore = function(){
