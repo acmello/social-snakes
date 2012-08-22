@@ -5,10 +5,6 @@ function Game(){
   var _currentPos = {'x': 10, 'y': 10};
   var _currentFoodPos = {'x': 30, 'y': 30};
   var _game = this;
-<<<<<<< HEAD
-  var _randomList = [10, ,20, 40, 80, 90, 70, 200, 300, 140, 220, 180, 260];
-=======
->>>>>>> lots of changes
   var snakeBody = [];
   var loop;
   var allowKeys = true;
@@ -131,7 +127,6 @@ function Game(){
   };
 
   this.generateRandomFood = function(){
-    // better solution :)
     var x = Math.floor(Math.random()*(_canvas.width/_gridsize))*_gridsize;
     var y = Math.floor(Math.random()*(_canvas.width/_gridsize))*_gridsize;
     
