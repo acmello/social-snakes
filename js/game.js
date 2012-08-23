@@ -3,6 +3,7 @@ function Game(){
   var _gridsize = 10;
   var _dir = 'right';
   var _currentPos = {'x': 10, 'y': 10};
+  var _currentPos = {'x': 30, 'y': 30};
   var _currentFoodPos = {'x': 30, 'y': 30};
   var _game = this;
   var snakeBody = [];
@@ -143,6 +144,9 @@ function Game(){
 
   this.detectCollision = function(){
     if(_currentPos['x'] === _currentFoodPos['x'] && _currentPos['y'] === _currentFoodPos['y']){
+    if(_currentPos['x'] === _currentFoodPos['x'] 
+      && _currentPos['y'] === _currentFoodPos['y']){
+      
       _game.generateRandomFood();
       _game.increaseScore();
       length++; 
@@ -170,6 +174,7 @@ function Game(){
     }
     
     _game.restoreDefault();
+  
     _game.showMessage();
   };
 
@@ -198,11 +203,23 @@ function Game(){
         } 
       });
     }); 
+    if(confirm("You're dead dude! Wanna start it over?")){
+      _game.restoreDefault();
+      _game.init();
+    }else{
+      for(var i = 0; i <= length; i++){
+        var itemRemoved = snakeBody.shift();
+        _ctx.clearRect(itemRemoved[0],itemRemoved[1], _gridsize, _gridsize);
+        _ctx.clearRect(_currentPos['x'],_currentPos['y'], _gridsize, _gridsize);
+      }
+    }     
   };
 
   this.restoreDefault = function(){
     _currentPos['x'] = 10;
     _currentPos['y'] = 10;
+    _currentPos['x'] = 20;
+    _currentPos['y'] = 30;
     length = 3;
     score = 0;
     _dir = 'right';
