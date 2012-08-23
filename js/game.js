@@ -155,6 +155,7 @@ function Game(){
     }else if(_currentPos['x'] === 390 || _currentPos['y'] === 390){  
       game.gameOver();
     }  
+    }    
   };
 
   this.gameOver = function(){
