@@ -2,13 +2,11 @@ function Game(){
   var _canvas, _ctx; 
   var _gridsize = 10;
   var _dir = 'right';
-  var _currentPos = {'x': 10, 'y': 10};
   var _currentPos = {'x': 30, 'y': 30};
   var _currentFoodPos = {'x': 30, 'y': 30};
   var _game = this;
   var snakeBody = [];
   var loop;
-  var allowKeys = true;
   var length = 3;
   var score = 0;
 
@@ -143,18 +141,12 @@ function Game(){
   };
 
   this.detectCollision = function(){
-    if(_currentPos['x'] === _currentFoodPos['x'] && _currentPos['y'] === _currentFoodPos['y']){
     if(_currentPos['x'] === _currentFoodPos['x'] 
       && _currentPos['y'] === _currentFoodPos['y']){
       
       _game.generateRandomFood();
       _game.increaseScore();
       length++; 
-    }else if(_currentPos['x'] === 0 || _currentPos['y'] === 0){
-      _game.gameOver();
-    }else if(_currentPos['x'] === 390 || _currentPos['y'] === 390){  
-      game.gameOver();
-    }  
     }    
   };
 
@@ -173,10 +165,12 @@ function Game(){
         _ctx.clearRect(_currentPos['x'],_currentPos['y'], _gridsize, _gridsize);
       } 
     }
-    
-    _game.restoreDefault();
   
     _game.showMessage();
+<<<<<<< HEAD
+=======
+    
+>>>>>>> remove useless stuff.
   };
 
   this.increaseScore = function(){
@@ -185,25 +179,6 @@ function Game(){
   };
 
   this.showMessage = function(){
-    allowKeys = false;
-    $(function() {
-      $("#dialog-message").dialog({
-        title: "Social Snake say :",
-        width: 290,
-        height: 200,
-        resizable: false,
-        modal: true,
-        buttons: {
-          Yeah : function() {
-            $(this).dialog("close");
-            _game.init();
-          },
-          Nope : function() {
-            $(this).dialog("close");
-          }
-        } 
-      });
-    }); 
     if(confirm("You're dead dude! Wanna start it over?")){
       _game.restoreDefault();
       _game.init();
@@ -217,8 +192,6 @@ function Game(){
   };
 
   this.restoreDefault = function(){
-    _currentPos['x'] = 10;
-    _currentPos['y'] = 10;
     _currentPos['x'] = 20;
     _currentPos['y'] = 30;
     length = 3;
