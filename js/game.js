@@ -167,10 +167,6 @@ function Game(){
     }
   
     _game.showMessage();
-<<<<<<< HEAD
-=======
-    
->>>>>>> remove useless stuff.
   };
 
   this.increaseScore = function(){
