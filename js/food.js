@@ -8,10 +8,10 @@ function Food(game){
 		var x = Math.floor(Math.random()*(game.canvas.width/game.gridSize))*game.gridSize;
 		var y = Math.floor(Math.random()*(game.canvas.width/game.gridSize))*game.gridSize;
 		
-		var positionArray = [x,y];
-		if( snakeBody.some( isElementHere ) ) {
+		//var positionArray = [x,y];
+		//if( snakeBody.some( isElementHere ) ) {
 
-		}
+		//}
 
 		food.x = x;
 		food.y = y;
