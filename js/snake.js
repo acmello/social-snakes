@@ -1,25 +1,26 @@
 function Snake(game){
-	this.x = 0;
-	this.y = 0;
+	this.x = 10;
+	this.y = 10;
 	this.direction = 'right';
-	
+	this.snakeBody = [];
+
 	var snake = this;
-	var snakeBody = []
+	
 	var length = 3;
 	
 	this.draw = function(){
-      if ( snakeBody.some( snake.hasEatenItself ) ) {
-        return false;
-      }
+    if ( this.snakeBody.some( snake.hasEatenItself ) ) {
+      game.gameOver();
+    }
     
-      snakeBody.push( [ snake.x, snake.y ] );
-      game.ctx.fillStyle = 'rgb(59, 89, 152)';
-      game.ctx.fillRect( snake.x, snake.y, game.gridSize , game.gridSize );   
+    this.snakeBody.push( [ snake.x, snake.y ] );
+    game.ctx.fillStyle = 'rgb(59, 89, 152)';
+    game.ctx.fillRect( snake.x, snake.y, game.gridSize , game.gridSize );   
     
-      if( snakeBody.length > length ){
-        var itemRemoved = snakeBody.shift();
-        game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize , game.gridSize );  
-      }
+    if( this.snakeBody.length > length ){
+      var itemRemoved = this.snakeBody.shift();
+      game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize , game.gridSize );  
+    }
 	};
   
   this.move = function(){ 
@@ -40,45 +41,45 @@ function Snake(game){
   };
   
   this.moveRight = function(){
-    if(snake.x < (game.canvas.width - game.gridSize)) 
+    if( snake.x < ( game.canvas.width - game.gridSize ) ) 
       snake.x = snake.x + game.gridSize;
     
     snake.draw();   
   };
 
   this.moveLeft = function(){
-    if(snake.x > 0)
+    if( snake.x > 0 )
       snake.x = snake.x - game.gridSize;
     
     snake.draw();   
   };
 
   this.moveUp = function(){
-    if(snake.y > 0)
+    if( snake.y > 0 )
       snake.y = snake.y - game.gridSize;
 
     snake.draw();   
   };
 
   this.moveDown = function(){
-    if(snake.y < (game.canvas.height - game.gridSize))
+    if( snake.y < ( game.canvas.height - game.gridSize ) )
       snake.y = snake.y + game.gridSize;
    
     this.draw();   
   };
   
   this.collidesWith = function(element){
-    if(snake.x === element.x 
-      && snake.y === element.y){
+    if( snake.x === element.x 
+        && snake.y === element.y ){
       length++;
-	  return true;
+	    return true;
     }
-	return false;
+	  return false;
   };
   
   this.clear = function(){
 	for(var i = 0; i <= length; i++){
-      var itemRemoved = snakeBody.shift();
+      var itemRemoved = this.snakeBody.shift();
       try {
         game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize, game.gridSize );
       } catch(err){
