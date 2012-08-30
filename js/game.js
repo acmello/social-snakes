@@ -92,7 +92,7 @@ function Game(canvas, ctx){
 	 	else { score += 10; }
 		
 		// rerenders the score on the screen
-   	scoreElement.innerText = scoreTagText+score;
+   	scoreElement.innerText = scoreTagText+' '+score;
   };
 
   this.showMessage = function(){

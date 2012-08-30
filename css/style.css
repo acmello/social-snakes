@@ -1,5 +1,10 @@
+body {
+    color: #333333;
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-size: 12px;
+}
+
 .canvas_style {
-	border: 1px solid;
-	border-color: #3b5998;
-	background-color: white ;
+	border: 1px solid #3b5998;
+	background-color: #F2F2F2;
 }
