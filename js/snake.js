@@ -21,22 +21,22 @@ function Snake(game){
       var itemRemoved = this.snakeBody.shift();
       game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize , game.gridSize );  
     }
-	};
+  };
   
   this.move = function(){ 
     switch(snake.direction){
       case 'right':
-        snake.moveRight();
-        break;
+      snake.moveRight();
+      break;
       case 'left':
-        snake.moveLeft();
-        break;
+      snake.moveLeft();
+      break;
       case 'up':
-        snake.moveUp();
-        break;
+      snake.moveUp();
+      break;
       case 'down':
-        snake.moveDown();
-        break;  
+      snake.moveDown();
+      break;  
     }
   };
   
@@ -64,28 +64,28 @@ function Snake(game){
   this.moveDown = function(){
     if( snake.y < ( game.canvas.height - game.gridSize ) )
       snake.y = snake.y + game.gridSize;
-   
+
     this.draw();   
   };
   
   this.collidesWith = function(element){
     if( snake.x === element.x 
-        && snake.y === element.y ){
+      && snake.y === element.y ){
       length++;
-	    return true;
-    }
-	  return false;
-  };
-  
-  this.clear = function(){
-	for(var i = 0; i <= length; i++){
-      var itemRemoved = this.snakeBody.shift();
-      try {
-        game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize, game.gridSize );
-      } catch(err){
-        game.ctx.clearRect( snake.x, snake.y, game.gridSize, game.gridSize );
-      } 
-    }
+    return true;
+  }
+  return false;
+};
+
+this.clear = function(){
+  for(var i = 1; i <= length; i++){
+    // if there's nothing in the body, returns the current position to be cleaned
+    var itemRemoved = this.snakeBody == undefined ? [[ snake.x, snake.y ]] : 
+    this.snakeBody.shift();
+    game.ctx.clearRect( itemRemoved[0], itemRemoved[1], game.gridSize, game.gridSize );
+  }
+    // workaround, ugly i know...
+    snake.x = undefined, snake.y = undefined;
   };
   
   this.hasEatenItself = function(element, index, array) {

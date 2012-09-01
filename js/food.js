@@ -7,11 +7,13 @@ function Food(game){
 	this.generateRandomPosition = function(){
 		var x = Math.floor(Math.random()*(game.canvas.width/game.gridSize))*game.gridSize;
 		var y = Math.floor(Math.random()*(game.canvas.width/game.gridSize))*game.gridSize;
-		
-		//var positionArray = [x,y];
-		//if( snakeBody.some( isElementHere ) ) {
 
+		//var positionArray = [x,y];
+		//if( game.snakeBody.some( isElementHere ) ) {
+		//	console.log("boom");
 		//}
+
+        console.log( "x"+x+" y"+y );
 
 		food.x = x;
 		food.y = y;
@@ -26,11 +28,12 @@ function Food(game){
 	};
 	
 	this.isElementHere = function(element, index, array) {
-    	return ( element[0] == snakeBody.x && element[1] == snake.y );  
-  	};
-  
+       return ( element[0] == snakeBody.x && element[1] == snake.y );  
+   };
+
   	// clear element on the screen
-	this.clear = function(){
-		game.ctx.clearRect( food.x, food.y, game.gridsize, game.gridsize );
-	};
+   this.clear = function(){
+      var ctx = game.ctx;
+      ctx.clearRect( food.x, food.y, game.gridSize, game.gridSize );
+  };
 }

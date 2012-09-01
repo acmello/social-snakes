@@ -14,6 +14,7 @@ function Game(canvas, ctx){
   var snake;
   var food;  
   var score;
+  var speed = 100;
   var gameLoop;
   
   var scoreElement = document.getElementById("score");	
@@ -27,82 +28,82 @@ function Game(canvas, ctx){
   
   this.startGame = function(){
 	  // initialize the score with 0
-		game.scoreHandler();
-		
+    game.scoreHandler();
+
 		// draw the snake for the very first time
 		snake.draw();
-	    
+
 		// draw the food for the very first time
 		food.generateRandomPosition();
-	    
+
 		// starts the keyboard handle, it means you can
 		// you can start to use keyboard commands from now on
 		game.keyBoardHandler();
 		
 		// game loop, responsible to move stuff in a 60 FPS
 		gameLoop = setInterval(function(){
-			if(snake.collidesWith(food)){
+			if( snake.collidesWith( food ) ){
 				food.generateRandomPosition();
 				game.scoreHandler();
 			}	
 			snake.move();
-		}, 100); 
+		}, speed); 
   };
 
   this.keyBoardHandler = function(){
   	$(document).bind('keypress', function(ev){
-			
-			var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-			
-			switch(keyCode){
-    	case 119:
-				if(snake.direction === 'down') { return false; }
-        	snake.direction = 'up';
-          snake.moveUp();
-          break;
-      case 97:
-				if(snake.direction === 'right') { return false; }
-        	snake.direction = 'left';
-          snake.moveLeft();
-          break;
-      case 115:
-      	if(snake.direction === 'up') { return false; } 
-        	snake.direction = 'down';
-          snake.moveDown();
-          break;
-      case 100:
-				if(snake.direction === 'left') { return false; }
-        	snake.direction = 'right';
-          snake.moveRight();
-          break;
-    	}
-    }); 
+
+     var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+
+     switch(keyCode){
+       case 119:
+       if(snake.direction === 'down') { return false; }
+       snake.direction = 'up';
+       snake.moveUp();
+       break;
+       case 97:
+       if(snake.direction === 'right') { return false; }
+       snake.direction = 'left';
+       snake.moveLeft();
+       break;
+       case 115:
+       if(snake.direction === 'up') { return false; } 
+       snake.direction = 'down';
+       snake.moveDown();
+       break;
+       case 100:
+       if(snake.direction === 'left') { return false; }
+       snake.direction = 'right';
+       snake.moveRight();
+       break;
+     }
+   }); 
   };  
 
-	this.gameOver = function(){
-		clearInterval(gameLoop);
-  	$(document).unbind('keypress');
-  	food.clear();
-  	snake.clear();
-  	game.showMessage();
-	};
+  this.gameOver = function(){
+    clearInterval(gameLoop);
+    $(document).unbind('keypress');
+    speed = 100;
+    food.clear();
+    snake.clear();
+    game.showMessage();
+  };
 
-	this.scoreHandler = function() {
-		if( isNaN( score ) ) { score = 0; }
-	 	else { score += 10; }
-		
+  this.scoreHandler = function() {
+    if( isNaN( score ) ) { score = 0; }
+    else { 
+      score += 1; 
+      if ( score % 2 ) { speed -= 1; }
+      console.log("speed : " + speed );
+    }
+
 		// rerenders the score on the screen
-   	scoreElement.innerText = scoreTagText+' '+score;
+    scoreElement.innerText = scoreTagText+' '+score;
   };
 
   this.showMessage = function(){
     if( confirm("You're dead dude! Wanna start it over?") )
+      // restart
       game.init();
   };
-
-  this.restart = function(){
-  	food.clear();
-  	snake.clear();
-  	game.init();
-  }
 }
