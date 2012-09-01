@@ -90,9 +90,13 @@ function Game(canvas, ctx){
   };
 
   this.scoreHandler = function() {
+    // if there's no value at first, set it to 0
     if( isNaN( score ) ) { score = 0; }
-    else { 
-      score += 1; 
+    else {
+      // otherwise increment it 
+      score += 1;
+      // check to see if the remainer is 2
+      // then increase the speed
       if ( score % 2 ) { speed -= 1; }
       console.log("speed : " + speed );
     }
