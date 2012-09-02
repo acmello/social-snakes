@@ -3,6 +3,12 @@ body {
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
 	margin: 15px 0 0 15px;
+	width: 765px;
+}
+
+.canvas_style {
+	border: 1px solid #E2E2E2;
+	background-color: #F2F2F2;
 }
 
 .how_to_play {
@@ -34,11 +40,6 @@ body {
 .main_title_how_to_play {
 	padding-top: 20px;
 	padding-bottom: 30px;
-}
-
-.canvas_style {
-	border: 1px solid #E2E2E2;
-	background-color: #F2F2F2;
 }
 
 .main_screen_style {
