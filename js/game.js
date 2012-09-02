@@ -21,7 +21,7 @@ function Game(canvas, ctx){
   var scoreTagText = scoreElement.innerText;
 
   this.init = function(){
-  	snake = new Snake(game);
+    snake = new Snake(game);
   	food = new Food(game);
   	game.startGame();
   };
@@ -106,8 +106,10 @@ function Game(canvas, ctx){
   };
 
   this.showMessage = function(){
-    if( confirm("You're dead dude! Wanna start it over?") )
-      // restart
-      game.init();
+    score = 0;
+    if( confirm("You're dead dude! Wanna start it over?") ) 
+      game.init(); // restart
+     else 
+      score = undefined
   };
 }
