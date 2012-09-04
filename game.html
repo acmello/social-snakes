@@ -8,6 +8,13 @@
 		<script src="js/food.js"></script>
 		<script src="js/snake.js"></script>
 		<script src="js/game.js"></script>
+<!-- scoreboard api -->
+		<script src="http://www.acasadojava.com.br/gsb/GSB.js"></script>
+<!-- /scoreboard api -->
+<!-- custom scoreboard -->
+		<link rel="stylesheet" type="text/css" href="css/scoreboard.css"></style>
+		<script src="js/scoreboard.js"></script>
+<!-- /custom scoreboard -->
 	</head>
 	<body>
 		<div class="main_screen_style game">
@@ -17,8 +24,13 @@
 			</div>
 			<div id="info" class="center">Press SPACE BAR to start the game.</div>
 		</div>
+<!-- scoreboard api -->
 		<div class="main_score_style">
 			<div class="block_header">Scoreboard:</div>
+			<ul id="players_and_scores">
+				<li class="name"><b>{p}</b>) {name}:</li><li class="score">{score}</li>
+			<ul>
 		</div>
+<!-- /scoreboard api -->
 	</body>
 </html>
