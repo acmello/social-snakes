@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 function Game(canvas, ctx){
-	this.canvas = canvas;
+  this.canvas = canvas;
   this.ctx = ctx;
   this.gridSize = 10;
   
@@ -16,6 +16,8 @@ function Game(canvas, ctx){
   var score;
   var speed = 100;
   var gameLoop;
+  var paused = true;
+  var allowPressKeys = true;
   
   var scoreElement = document.getElementById("score");	
   var scoreTagText = scoreElement.innerText;
@@ -27,62 +29,68 @@ function Game(canvas, ctx){
   };
   
   this.startGame = function(){
-	  // initialize the score with 0
-    game.scoreHandler();
+	// initialize the score with 0
+	game.scoreHandler();
 
-		// draw the snake for the very first time
-		snake.draw();
+	// draw the snake for the very first time
+	snake.draw();
 
-		// draw the food for the very first time
-		food.generateRandomPosition();
-
-		// starts the keyboard handle, it means you can
-		// you can start to use keyboard commands from now on
-		game.keyBoardHandler();
-		
-		// game loop, responsible to move stuff in a 60 FPS
-		gameLoop = setInterval(function(){
-			if( snake.collidesWith( food ) ){
-				food.generateRandomPosition();
-				game.scoreHandler();
-			}	
-			snake.move();
-		}, speed); 
+	// draw the food for the very first time
+	food.generateRandomPosition();
+	
+	// game loop, responsible to move stuff in a 60 FPS
+	game.updateAndRender(); 
   };
 
-  this.keyBoardHandler = function(){
-  	$(document).bind('keypress', function(ev){
+  
+  document.onkeypress = function(ev) {
+	if(!allowPressKeys)
+		return
+	
+	var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+	
+	switch(keyCode)
+	{
+	  case 119:
+	    if(snake.direction === 'down') { return false; }
+		snake.direction = 'up';
+		snake.moveUp();
+		break;
+      
+	  case 97:
+	    if(snake.direction === 'right') { return false; }
+		snake.direction = 'left';
+		snake.moveLeft();
+		break;
+	  
+	  case 115:
+	    if(snake.direction === 'up') { return false; } 
+		snake.direction = 'down';
+		snake.moveDown();
+		break;
+	  
+	  case 100:
+	    if(snake.direction === 'left') { return false; }
+		snake.direction = 'right';
+		snake.moveRight();
+		break;
+	}
+  };
 
-     var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-
-     switch(keyCode){
-       case 119:
-       if(snake.direction === 'down') { return false; }
-       snake.direction = 'up';
-       snake.moveUp();
-       break;
-       case 97:
-       if(snake.direction === 'right') { return false; }
-       snake.direction = 'left';
-       snake.moveLeft();
-       break;
-       case 115:
-       if(snake.direction === 'up') { return false; } 
-       snake.direction = 'down';
-       snake.moveDown();
-       break;
-       case 100:
-       if(snake.direction === 'left') { return false; }
-       snake.direction = 'right';
-       snake.moveRight();
-       break;
-     }
-   }); 
-  };  
+  document.onkeydown = function(ev) {
+	var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+	
+	switch(keyCode)
+	{
+	  case 32:
+	    game.paused = !game.paused;
+	    game.pause();
+		break;
+	}
+  };	
 
   this.gameOver = function(){
     clearInterval(gameLoop);
-    $(document).unbind('keypress');
     speed = 100;
     food.clear();
     snake.clear();
@@ -98,18 +106,34 @@ function Game(canvas, ctx){
       // check to see if the remainer is 2
       // then increase the speed
       if ( score % 2 ) { speed -= 1; }
-      console.log("speed : " + speed );
     }
-
-		// rerenders the score on the screen
+	// rerenders the score on the screen
     scoreElement.innerText = scoreTagText+' '+score;
   };
 
+  this.pause = function(){
+	allowPressKeys = !allowPressKeys;
+	// TODO add image related to the pause function
+	if ( game.paused ) { clearInterval( gameLoop ); }
+	else { game.updateAndRender(); }
+  }
+  
+  this.updateAndRender = function(){
+	gameLoop = setInterval(function(){
+	  if( snake.collidesWith( food ) ){
+	    food.generateRandomPosition();
+		game.scoreHandler();
+	  }	
+      snake.move();
+	}, speed); 
+  };
+  
   this.showMessage = function(){
     score = 0;
-    if( confirm("You're dead dude! Wanna start it over?") ) 
-      game.init(); // restart
-     else 
+    if( confirm("You're dead dude! Wanna start it over?") ) { game.init(); } // restart }
+    else { 
       score = undefined
+	  window.location = "index.html";
+	}
   };
 }
