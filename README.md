@@ -35,6 +35,26 @@ Facebooks's Setup:
 1) You must be an authorized app's collaborator.<br>
 2) Test in your browser the location (note it's non secure http; only for development and testing purposes it's NOT https): `http://apps.facebook.com/social-snakes`<br>
 
+Local Persoanl .git/config File Template:
+-----------------------------------------
+    
+    [core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+        ignorecase = true
+    [remote "origin"]
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        # url = git@github.com:acmello/social-snakes.git
+        url = https://github.com/acmello/social-snakes.git
+    [branch "master"]
+        remote = origin
+        merge = refs/heads/master
+    [user]
+        name = user
+        email = user@somewhere
+
 <br>
 ### See also:<br>
 https://developers.facebook.com/docs/guides/games/getting-started/<br>
