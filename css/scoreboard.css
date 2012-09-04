@@ -6,6 +6,10 @@ body {
 	width: 765px;
 }
 
+ul {
+	list-style-type: none;
+}
+
 .center {
 	text-align: center;
 }
@@ -34,4 +38,17 @@ body {
 .block_content {
 	padding: 3px;
 	padding-top: 6px;
+}
+
+
+
+
+
+#players_and_scores {
+	display: none;
+}
+.name {
+	margin-left: -25px;
+	float: left;
+	width: 128px;
 }
