@@ -35,7 +35,7 @@ Facebooks's Setup:
 1) You must be an authorized app's collaborator.<br>
 2) Test in your browser the location (note it's non secure http; only for development and testing purposes it's NOT https): `http://apps.facebook.com/social-snakes`<br>
 
-Local Persoanl .git/config File Template:
+Local Personal .git/config File Template:
 -----------------------------------------
     
     [core]
