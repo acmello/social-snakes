@@ -146,7 +146,7 @@ function Game(canvas, ctx) {
     } // restart }
     else {
       score = undefined
-      window.location = "index.html";
+      window.location = ".";
     }
   };
 }
