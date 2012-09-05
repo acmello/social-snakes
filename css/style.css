@@ -106,3 +106,16 @@ body {
 .btn_back:hover {
 	background: url("../img/screen-how-to-play-btn-back-over.png");
 }
+
+.main_img_style {
+	float: left;
+	position: relative;
+	right: 390px;
+	bottom: 190px;
+	width: 195px;
+	height: 67px;
+}
+
+#img_pause {
+	display: none;
+}

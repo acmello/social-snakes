@@ -18,7 +18,7 @@ function Game(canvas, ctx) {
   var gameLoop;
   var paused = true;
   var allowPressKeys = true;
-
+  
   var scoreElement = document.getElementById("score");
   var scoreTagText = scoreElement.innerText;
 
@@ -121,11 +121,14 @@ function Game(canvas, ctx) {
 
   this.pause = function() {
     allowPressKeys = !allowPressKeys;
-    // TODO add image related to the pause function
-    if (game.paused) {
+	var img = $("#img_pause");
+    
+	if (game.paused) {
+	  img.css("display","block");
       clearInterval(gameLoop);
     } else {
-      game.updateAndRender();
+	  img.css("display","none");
+	  game.updateAndRender();
     }
   }
 
