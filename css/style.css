@@ -6,6 +6,10 @@ body {
 	width: 765px;
 }
 
+.color {
+	color: #4a6bac;
+}
+
 .canvas_style {
 	border: 1px solid #E2E2E2;
 	background-color: #F2F2F2;

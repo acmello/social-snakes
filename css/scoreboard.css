@@ -51,4 +51,8 @@ ul {
 	margin-left: -25px;
 	float: left;
 	width: 128px;
+	border-right: 1px solid #E2E2E2;
+	margin-right: 10px;
+}
+.score {
 }

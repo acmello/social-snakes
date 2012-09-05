@@ -16,7 +16,7 @@ function scoreboardReadOnReady(response) {
   var list = $('#players_and_scores');
   list.fadeIn(500);
   list.html('');
-  var playerTemplate = '<li class="name"><b>{p}</b>) {name}:</li><li class="score">{score}</li>';
+  var playerTemplate = '<li class="name"><b class="color">{p}.</b> &nbsp; {name}:</li><li class="score">{score}</li>';
   //
   var status = response['status'];
   if (status == GSB.STATUS_OK) {
