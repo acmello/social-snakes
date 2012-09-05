@@ -55,7 +55,7 @@ body {
 	margin-right: 15px;
 }
 
-.main_menu, .how_to_play {
+.main_menu, .how_to_play ,.game {
 	background: url(../img/start-screen-bg.png);
 }
 
