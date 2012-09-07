@@ -22,8 +22,12 @@ Apache's Setup:
 ---------------
 1) Edit Apache's configuration file `/etc/apache2/httpd.conf` adding at the end the following:<br>
 
-    Alias /social-snakes /projects/Social-Snakes/social-snakes/<br>
-    <Directory "/projects/Social-Snakes/social-snakes/"><br>
+    Alias /social-snakes /projects/Social-Snakes/social-snakes/
+    <Directory "/projects/Social-Snakes/social-snakes/">
+        <IfModule mime_module>
+            AddType text/html .aspx
+        </IfModule><br>
+        DirectoryIndex default.aspx
         Allow from all
     </Directory>
 

@@ -12,7 +12,8 @@ body {
 
 .canvas_style {
 	border: 1px solid #E2E2E2;
-	background-color: #F2F2F2;
+	/* background-color: #F2F2F2; */
+	background-color: rgba(242, 242, 242, 0.5);
 }
 
 .how_to_play {
@@ -33,7 +34,10 @@ body {
 }
 
 #info {
-	padding-top: 10px;
+	padding-top: 8px;
+}
+#info_score {
+	padding-bottom: 8px;
 }
 
 .main_title {

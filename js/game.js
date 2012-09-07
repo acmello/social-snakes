@@ -20,7 +20,6 @@ function Game(canvas, ctx) {
   var allowPressKeys = true;
   
   var scoreElement = document.getElementById("score");
-  var scoreTagText = scoreElement.innerText;
 
   this.init = function() {
     snake = new Snake(game);
@@ -30,7 +29,7 @@ function Game(canvas, ctx) {
 
   this.startGame = function() {
     // initialize the score with 0
-    game.scoreHandler();
+    game.scoreInit();
 
     // draw the snake for the very first time
     snake.draw();
@@ -99,14 +98,21 @@ function Game(canvas, ctx) {
     speed = 100;
     food.clear();
     snake.clear();
+    // game.sendScore();
     game.showMessage();
   };
 
+  this.scoreInit = function() {
+    scoreElement.innerHTML = 0;
+  }
+
   this.scoreHandler = function() {
+    var score = scoreElement.innerHTML;
     // if there's no value at first, set it to 0
     if (isNaN(score)) {
       score = 0;
     } else {
+      score = new Number(score);
       // otherwise increment it 
       score += 1;
       // check to see if the remainer is 2
@@ -116,20 +122,24 @@ function Game(canvas, ctx) {
       }
     }
     // rerenders the score on the screen
-    scoreElement.innerText = scoreTagText + ' ' + score;
+    scoreElement.innerHTML = score;
   };
 
   this.pause = function() {
+    game.playPauseSound();
     allowPressKeys = !allowPressKeys;
-	var img = $("#img_pause");
-    
-	if (game.paused) {
-	  img.css("display","block");
+    var img = $("#img_pause");
+    if (game.paused) {
+      img.fadeIn(100);
       clearInterval(gameLoop);
     } else {
-	  img.css("display","none");
-	  game.updateAndRender();
+      img.fadeOut(100);
+      game.updateAndRender();
     }
+  };
+
+  this.playPauseSound = function() {
+    
   }
 
   this.updateAndRender = function() {
@@ -152,4 +162,9 @@ function Game(canvas, ctx) {
       window.location = "default.aspx";
     }
   };
+
+  this.sendScore = function() {
+    var score = scoreElement.innerHTML;
+    scoreboardWrite(FBCurrentUser.name, FBCurrentUser.fbId, score);
+  }
 }

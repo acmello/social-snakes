@@ -9,20 +9,24 @@
 		<script src="js/snake.js"></script>
 		<script src="js/game.js"></script>
 <!-- scoreboard api -->
+<!--
 		<script src="http://www.acasadojava.com.br/gsb/GSB.js"></script>
+-->
 <!-- /scoreboard api -->
 <!-- custom scoreboard -->
 		<link rel="stylesheet" type="text/css" href="css/scoreboard.css"></style>
+<!--
 		<script src="js/scoreboard.js"></script>
+-->
 <!-- /custom scoreboard -->
 	</head>
 	<body>
 		<div class="main_screen_style game">
-			<div id="score">Score: </div>
+			<div id="info_score">Score: <b id="score">0</b></div>
 			<div class="center">
 				<canvas id="canvas" width="400" height="400" class="canvas_style"></canvas>
 			</div>
-			<div id="info" class="center">Press SPACE BAR to start the game.</div>
+			<div id="info" class="center">Press SPACE BAR to pause or unpause the game.</div>
 		</div>
 <!-- scoreboard api -->
 		<div class="main_score_style">
@@ -31,12 +35,11 @@
 				<li class="name"><b class="color">{p}.</b> {name}:</li><li class="score">{score}</li>
 			<ul>
 		</div>
-<!-- /scoreboard api -->
-	
-<!-- div related to the image stuff -->
-	<div class="main_img_style">
-		<img src="img/pause.png" id="img_pause"></img>
-	</div>
-<!-- /div related to the image stuff -->
+<!-- /scoreboard api -->	
+<!-- pause screen -->
+		<div class="main_img_style">
+			<img src="img/pause.png" id="img_pause"></img>
+		</div>
+<!-- /pause screen -->
 	</body>
 </html>

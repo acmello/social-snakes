@@ -4,7 +4,7 @@ $(document).ready(
   }
 );
 
-function FBCurrentUser {
+function FBCurrentUser() {
 }
 FBCurrentUser.name = null;
 FBCurrentUser.fbId = -1;
