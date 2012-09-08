@@ -21,7 +21,7 @@
 	<key>com_apple_garageband_metadata_parentalAdvisory</key>
 	<string>None</string>
 	<key>com_apple_garageband_metadata_songDuration</key>
-	<real>4.2999999999999998</real>
+	<real>4.2400000000000002</real>
 	<key>com_apple_garageband_metadata_songGender</key>
 	<string>major</string>
 	<key>com_apple_garageband_metadata_songKey</key>
@@ -31,7 +31,7 @@
 	<key>com_apple_garageband_metadata_songSignatureNominator</key>
 	<integer>4</integer>
 	<key>com_apple_garageband_metadata_songTempo</key>
-	<integer>120</integer>
+	<integer>150</integer>
 	<key>com_apple_garageband_metadata_songTitle</key>
 	<string>sounds</string>
 	<key>com_apple_garageband_metadata_songVersionNumber</key>
