@@ -43,11 +43,15 @@ body {
 .main_title {
 	padding-top: 40px;
 	padding-bottom: 70px;
+	width: 477px;
+	height: 209px;
 }
 
 .main_title_how_to_play {
 	padding-top: 20px;
 	padding-bottom: 30px;
+	width: 392px;
+	height: 69px;
 }
 
 .main_screen_style {
