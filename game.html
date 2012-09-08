@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Social Snake</title>
+		<title>Social Snakes</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/style.css"></style>
 		<script src="js/jquery-1.8.0.min.js"></script>
