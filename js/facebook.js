@@ -11,6 +11,11 @@ FBCurrentUser.fbId = -1;
 
 function facebookInit() {
   if(typeof(FB) != 'undefined') {
+
+
+    alert( 2 );
+
+
     FB.init({
       appId: '476027365749233',
       cookie: true,
@@ -57,12 +62,9 @@ function authUser() {
 }
 
 function showUser(uid) {
-  var user = $('#current_user');
-  user.html('Id: '+uid);
-  //
   FB.api('/me', function(response) {
     FBCurrentUser.name = response.name+" "+response.first_name;
     FBCurrentUser.fbId = response.id;
-    var imgLink = "http://graph.facebook.com/"+response.id+"/picture"
+    // var imgLink = "http://graph.facebook.com/"+response.id+"/picture"
   });
 }

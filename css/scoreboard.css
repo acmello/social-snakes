@@ -22,14 +22,6 @@ ul {
 	margin-bottom: 20px;
 }
 
-.current_user_style {
-	float: left;
-	width: 200px;
-	height: 50px;
-	border: 1px solid #E2E2E2;
-	margin-bottom: 20px;
-}
-
 .block_header {
 	padding: 3px;
 	border-bottom: 1px solid #E2E2E2;

@@ -5,7 +5,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/style.css"></style>
 		<script src="js/jquery-1.8.0.min.js"></script>
-		<script src="js/facebook.js"></script>
 <!-- scoreboard api -->
 		<script src="https://ssl731.websiteseguro.com/acasadossims1/zzz/acasadojava/gsb/GSB.js"></script>
 <!-- /scoreboard api -->
@@ -30,9 +29,5 @@
 			<ul>
 		</div>
 <!-- /scoreboard api -->
-		<div class="current_user_style">
-			<div class="block_header">User:</div>
-			<div id="current_user" class="block_content">loading...</div>
-		</div>
 	</body>
 </html>

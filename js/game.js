@@ -98,7 +98,7 @@ function Game(canvas, ctx) {
     speed = 100;
     food.clear();
     snake.clear();
-    // game.sendScore();
+    game.sendScore();
     game.showMessage();
   };
 
@@ -165,7 +165,7 @@ function Game(canvas, ctx) {
     } // restart }
     else {
       score = undefined
-      window.location = "default.aspx";
+      //window.location = "default.aspx";
     }
   };
 
