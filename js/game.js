@@ -126,20 +126,26 @@ function Game(canvas, ctx) {
   };
 
   this.pause = function() {
-    game.playPauseSound();
     allowPressKeys = !allowPressKeys;
     var img = $("#img_pause");
     if (game.paused) {
+      game.playPauseSound();
       img.fadeIn(100);
       clearInterval(gameLoop);
     } else {
+      game.playUnpauseSound();
       img.fadeOut(100);
       game.updateAndRender();
     }
   };
 
   this.playPauseSound = function() {
-    
+    var sound = $("#sound_pause")[0];
+    sound.play();    
+  }
+  this.playUnpauseSound = function() {
+    var sound = $("#sound_unpause")[0];
+    sound.play();        
   }
 
   this.updateAndRender = function() {
