@@ -162,10 +162,9 @@ function Game(canvas, ctx) {
     score = 0;
     if (confirm("You're dead dude! Wanna start it over?")) {
       game.init();
-    } // restart }
-    else {
+    } else {
       score = undefined
-      //window.location = "default.aspx";
+      window.location.href = ".";
     }
   };
 
