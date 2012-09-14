@@ -41,56 +41,53 @@ function Game(canvas, ctx) {
     game.updateAndRender();
   };
 
-
-  document.onkeypress = function(ev) {
-    if (!allowPressKeys) return
-
-    var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-
-    switch (keyCode) {
-    case 119:
-      if (snake.direction === 'down') {
-        return false;
-      }
-      snake.direction = 'up';
-      snake.moveUp();
-      break;
-
-    case 97:
-      if (snake.direction === 'right') {
-        return false;
-      }
-      snake.direction = 'left';
-      snake.moveLeft();
-      break;
-
-    case 115:
-      if (snake.direction === 'up') {
-        return false;
-      }
-      snake.direction = 'down';
-      snake.moveDown();
-      break;
-
-    case 100:
-      if (snake.direction === 'left') {
-        return false;
-      }
-      snake.direction = 'right';
-      snake.moveRight();
-      break;
-    }
-  };
-
   document.onkeydown = function(ev) {
     var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+    if (keyCode === 32 && !paused) return
 
     switch (keyCode) {
-    case 32:
-      game.paused = !game.paused;
-      game.pause();
-      break;
+    case 97:
+      case 37:
+        if (snake.direction === 'right') {
+          return false;
+        }
+        snake.direction = 'left';
+        snake.moveLeft();
+        break;
+
+      case 38:
+        if (snake.direction === 'down') {
+          return false;
+        }
+        snake.direction = 'up';
+        snake.moveUp(); 
+        break;
+
+      case 39:
+        if (snake.direction === 'left') {
+          return false;
+        }
+        snake.direction = 'right';
+        snake.moveRight();
+        break;
+      
+      case 40:
+        if (snake.direction === 'up') {
+          return false;
+        }
+        snake.direction = 'down';
+        snake.moveDown();
+        break;
+
+      case 32:
+        game.paused = !game.paused;
+        game.pause();
+        break;
     }
+
+    ev.cancelBubble = true;
+    if(ev.stopPropagation) ev.stopPropagation();
+
   };
 
   this.gameOver = function() {
@@ -114,7 +111,7 @@ function Game(canvas, ctx) {
     } else {
       score = new Number(score);
       // otherwise increment it 
-      score += 1;
+      score += 5;
       // check to see if the remainer is 2
       // then increase the speed
       if (score % 2) {
