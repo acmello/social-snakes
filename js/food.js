@@ -6,23 +6,12 @@ function Food(game) {
 
   this.generateRandomPosition = function() {
     var x = Math.floor(Math.random() * (game.canvas.width / game.gridSize)) * game.gridSize;
-    var y = Math.floor(Math.random() * (game.canvas.width / game.gridSize)) * game.gridSize;
-
-    var positionArray = [x, y];
-
-    console.log("x" + x + " y" + y);
+    var y = Math.floor(Math.random() * (game.canvas.height / game.gridSize)) * game.gridSize;
 
     food.x = x;
     food.y = y;
 
-    // trying to create the element but the snake is already there
-    //if( game.snakeBody != undefined && game.snakeBody.some( food.isSnakeHere ) )
-    //    food.generateRandomPosition();
     food.draw();
-  };
-
-  this.isSnakeHere = function(element, index, array) {
-    return (element[0] == food.x && element[0] == food.y);
   };
 
   this.draw = function() {
