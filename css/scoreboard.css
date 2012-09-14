@@ -33,7 +33,7 @@ ul {
 }
 
 #players_and_scores {
-	display: none;
+	/* display: none; */
 }
 .name {
 	color: rgb(39, 91, 152);
