@@ -65,7 +65,12 @@ function Snake(game) {
   };
 
   this.collidesWith = function(element) {
-    if (snake.x === element.x && snake.y === element.y) {
+   //console.log(snake.x + " => " + (element.x - game.gridSize) + " && " + snake.x + " < " + (element.x - game.gridSize))
+    if (!(((snake.y + game.gridSize) <= element.y) ||
+        (snake.y >= (element.y + game.gridSize)) ||
+        ((snake.x + game.gridSize) <= element.x ) ||
+        (snake.x >= (element.x + game.gridSize)))) {
+
       length++;
       return true;
     }
