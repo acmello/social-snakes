@@ -41,9 +41,12 @@ function Game(canvas, ctx) {
     game.updateAndRender();
   };
 
-  document.onkeydown = function(ev) {
+  $(document).bind("keydown", function(ev) {
+    
     var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-    if (keyCode === 32 && !paused) return
+    // if its paused and key code is not space 
+    // should prevent the movement.
+    if (game.paused && keyCode !== 32) return
 
     switch (keyCode) {
       case 37:
@@ -84,9 +87,7 @@ function Game(canvas, ctx) {
         break;
     }
 
-    ev.cancelBubble = true;
-    if(ev.stopPropagation) ev.stopPropagation();
-
+    ev.preventDefault();
   };
 
   this.gameOver = function() {
