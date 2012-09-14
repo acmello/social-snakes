@@ -154,6 +154,7 @@ function Game(canvas, ctx) {
         food.generateRandomPosition();
         game.scoreHandler();
       }
+      food.draw();
       snake.move();
     }, speed);
   };
