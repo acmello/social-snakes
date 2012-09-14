@@ -88,7 +88,7 @@ function Game(canvas, ctx) {
     }
 
     ev.preventDefault();
-  };
+  });
 
   this.gameOver = function() {
     clearInterval(gameLoop);
