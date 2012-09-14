@@ -46,7 +46,6 @@ function Game(canvas, ctx) {
     if (keyCode === 32 && !paused) return
 
     switch (keyCode) {
-    case 97:
       case 37:
         if (snake.direction === 'right') {
           return false;
