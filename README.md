@@ -59,6 +59,13 @@ Local Personal .git/config File Template:
         name = user
         email = user@somewhere
 
+
+Production Environment:
+-----------------------
+
+Shortened URL: http://bagu.al/cf
+
+
 <br>
 ### See also:<br>
 https://developers.facebook.com/docs/guides/games/getting-started/<br>
