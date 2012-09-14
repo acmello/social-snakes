@@ -10,7 +10,7 @@ function Food(game) {
 
     var positionArray = [x, y];
 
-    console.log("x" + x + " y" + y);
+    // console.log("x" + x + " y" + y);
 
     food.x = x;
     food.y = y;

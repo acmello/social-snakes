@@ -170,6 +170,6 @@ function Game(canvas, ctx) {
 
   this.sendScore = function() {
     var score = scoreElement.innerHTML;
-    scoreboardWrite(FBCurrentUser.name, FBCurrentUser.fbId, score);
+    scoreboardWrite(score);
   }
 }
