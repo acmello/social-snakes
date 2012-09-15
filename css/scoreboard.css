@@ -8,6 +8,7 @@ body {
 
 ul {
 	list-style-type: none;
+	margin-left: -30px;
 }
 
 .center {
@@ -16,7 +17,7 @@ ul {
 
 .main_score_style {
 	float: left;
-	width: 275px;
+	width: 250px;
 	height: 350px;
 	border: 1px solid #E2E2E2;
 	margin-bottom: 20px;
@@ -33,19 +34,37 @@ ul {
 }
 
 #players_and_scores {
-	/* display: none; */
+	padding: 10px;
 }
-.name {
-	color: rgb(39, 91, 152);
-	margin-left: -30px;
+.score_image {
 	float: left;
-	width: 200px;
-	border-right: 1px solid #E2E2E2;
-	margin-right: 10px;
 }
-.score {
+.score_name {
 	color: rgb(39, 91, 152);
 	background-color: rgb(229, 235, 242);
-	margin-right: 10px;
-	height: 25px;
+	float: left;
+	width: 140px;
+	border-right: 1px solid #E2E2E2;
+	padding: 4px;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+}
+.score_score {
+	font-weight: bold;
+	float: left;
+	color: rgb(39, 91, 152);
+	background-color: rgb(229, 235, 242);
+	width: 45px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 8px;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
 }

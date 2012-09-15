@@ -27,9 +27,9 @@
 <!-- scoreboard api -->
 		<div class="main_score_style">
 			<div class="block_header">Max Scores:</div>
-			<ul id="players_and_scores">
-				<li id="loading_message">loading...</li>
-			<ul>
+			<div id="players_and_scores">
+				<div id="loading_message">loading...</div>
+			</div>
 		</div>
 <!-- /scoreboard api -->	
 	</body>

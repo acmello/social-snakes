@@ -9,6 +9,8 @@ function Game(canvas, ctx) {
   this.canvas = canvas;
   this.ctx = ctx;
   this.gridSize = 10;
+  this.scoreIncrement = 25;
+  this.speedDecrement = 2;
 
   var game = this;
   var snake;
@@ -111,15 +113,17 @@ function Game(canvas, ctx) {
     } else {
       score = new Number(score);
       // otherwise increment it 
-      score += 5;
+      score += game.scoreIncrement;
       // check to see if the remainer is 2
       // then increase the speed
       if (score % 2) {
-        speed -= 1;
+        speed -= game.speedDecrement;
       }
     }
     // rerenders the score on the screen
     scoreElement.innerHTML = score;
+    // send to facebook
+    game.sendScore();
   };
 
   this.pause = function() {
