@@ -9,7 +9,7 @@ function Game(canvas, ctx) {
   this.canvas = canvas;
   this.ctx = ctx;
   this.gridSize = 10;
-  this.scoreIncrement = 25;
+  this.scoreIncrement = 5;
   this.speedDecrement = 2;
 
   var game = this;
