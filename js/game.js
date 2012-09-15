@@ -58,7 +58,6 @@ function Game(canvas, ctx) {
           return false;
         }
         snake.direction = 'left';
-        snake.moveLeft();
         break;
 
       case 38:
@@ -66,7 +65,6 @@ function Game(canvas, ctx) {
           return false;
         }
         snake.direction = 'up';
-        snake.moveUp(); 
         break;
 
       case 39:
@@ -74,7 +72,6 @@ function Game(canvas, ctx) {
           return false;
         }
         snake.direction = 'right';
-        snake.moveRight();
         break;
       
       case 40:
@@ -82,7 +79,6 @@ function Game(canvas, ctx) {
           return false;
         }
         snake.direction = 'down';
-        snake.moveDown();
         break;
 
       case 32:
