@@ -139,3 +139,7 @@ body {
 #img_gameover {
 	display: none;
 }
+
+.how_to_play > ul {
+	padding-left: 55px;
+}
