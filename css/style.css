@@ -124,6 +124,18 @@ body {
 	height: 67px;
 }
 
+.gameover_img_style {
+	float: left;
+	position: relative;
+	right: 460px;
+	bottom: 270px;
+	width: 195px;
+	height: 67px;
+}
+
 #img_pause {
+	display: none;
+}
+#img_gameover {
 	display: none;
 }

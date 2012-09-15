@@ -27,6 +27,8 @@ function Game(canvas, ctx) {
     snake = new Snake(game);
     food = new Food(game);
     game.startGame();
+    var img = $("#img_gameover");
+    img.hide();
   };
 
   this.startGame = function() {
@@ -161,6 +163,10 @@ function Game(canvas, ctx) {
   };
 
   this.showMessage = function() {
+    //
+    var img = $("#img_gameover");
+    img.show();
+    //
     score = 0;
     if (confirm("You're dead dude! Wanna start it over?")) {
       game.init();
