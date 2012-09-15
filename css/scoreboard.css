@@ -18,9 +18,18 @@ ul {
 .main_score_style {
 	float: left;
 	width: 250px;
-	height: 350px;
+	height: 395px;
+	border: 1px solid #E2E2E2;
+	margin-bottom: 15px;
+}
+
+.main_score_add_style {
+	float: left;
+	width: 242px;
+	height: 60px;
 	border: 1px solid #E2E2E2;
 	margin-bottom: 20px;
+	padding: 4px;
 }
 
 .block_header {
