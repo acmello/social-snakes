@@ -7,8 +7,38 @@
     <meta name="description" content="Social-Snakes : " />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
-    <title>Social-Snakes</title>
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="plugins/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox -->
+	<link rel="stylesheet" href="plugins/fancybox/source/jquery.fancybox.css?v=2.1.0" type="text/css" media="screen" />
+	<script type="text/javascript" src="plugins/fancybox/source/jquery.fancybox.pack.js?v=2.1.0"></script>
+
+	<!-- Optionally add helpers - button, thumbnail and/or media -->
+	<link rel="stylesheet" href="plugins/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.3" type="text/css" media="screen" />
+	<script type="text/javascript" src="plugins/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.3"></script>
+	<script type="text/javascript" src="plugins/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.3"></script>
+
+	<link rel="stylesheet" href="plugins/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.6" type="text/css" media="screen" />
+	<script type="text/javascript" src="plugins/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.6"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fancybox").fancybox({
+				helpers : {
+					title : {
+						type : 'outside'
+					}
+				}
+			})
+		});
+	</script>	
+	
+	<title>Social-Snakes</title>
   </head>
 
   <body>
@@ -16,7 +46,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/acmello/social-snake">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/acmello/social-snakes">Fork us on GitHub</a>
 
           <h1 id="project_title">Social-Snakes</h1>
           <h2 id="project_tagline"></h2>
@@ -32,24 +62,35 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h3>Welcome to Social-Snake.</h3>
+<p><a href="https://apps.facebook.com/social-snakes/">Social-Snakes</a> is a web game developed on the top of javascript and canvas technologies. We also, put it works on Facebook playground as an application. 
+It means you are now able to play it while you do whatever you want inside of your favorite social network. Awesome right? We hope all 
+you guys enjoy it as much as we do and stay tuned for the next updates. See you at the scoreboard.
+</p>
 
-<p>Comming soon... </p>
+<h3>Game Preview</h3>
+<p>Wanna see how it looks before give it a try? I'm just glad you ask it.</p>
+<p>
+	<a class="fancybox" rel="group" href="images/fullscreen/1.jpg" title="intial screen game"><img id="img_thumbnail" src="images/thumbnails/t_1.jpg" alt="" /></a>
+	<a class="fancybox" rel="group" href="images/fullscreen/2.jpg" title="help screen"><img id="img_thumbnail" src="images/thumbnails/t_1.jpg" alt="" /></a>
+	<a class="fancybox" rel="group" href="images/fullscreen/3.jpg" title="game screen"><img id="img_thumbnail" src="images/thumbnails/t_1.jpg" alt="" /></a>
+	<a class="fancybox" rel="group" href="images/fullscreen/4.jpg" title="game over"><img id="img_thumbnail" src="images/thumbnails/t_1.jpg" alt="" /></a>
+</p>
 
-<h3>Authors and Contributors</h3>
+<h3>Can I contribute?</h3>
 
-<p>This is project is being developed by Antonio Mello (@homeless_coder) and Cristiano Neves (@crizstanza). Any question, suggestions, bug report and stuff like that, drop us a line.</p>
+<p>If you feel like you have this great idea and wanna share with us, <strong>you don't need it</strong> (at least if you're a developer). Fork us on Github
+and start to play with code. There's a lot of enhancements to be made and would be great to count on you.</p>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Social-Snakes maintained by <a href="https://github.com/acmello">acmello</a></p>
+        <p class="copyright">Social-Snakes maintained by <a href="https://github.com/acmello">acmello</a> and 
+		<a href="https://github.com/crisstanza">cris stanza</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
