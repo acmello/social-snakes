@@ -4,6 +4,7 @@ function FacebookStuff() {
 FacebookStuff.refreshScores = true;
 
 FacebookStuff.appId = '476027365749233';
+FacebookStuff.scope = 'publish_actions';
 FacebookStuff.userID = 0;
 FacebookStuff.accessToken = null;
 FacebookStuff.score = 0;
@@ -41,7 +42,7 @@ function scoreboardInit() {
 
 /*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   */
 
-function authUser() {
+function authUserWithPopUp() {
 	FB.login(
 		function(response) {
 			if ( response.authResponse == null ) {
@@ -53,11 +54,20 @@ function authUser() {
 				FacebookStuff.userID = response.authResponse.userID;
 			}
 		},
-		{ scope: 'read_friendlists, publish_actions, publish_stream' }
+		{ scope: FacebookStuff.scope }
 	);
 }
 
-					
+function authUser() {
+	var url = ''+
+		'http://www.facebook.com/dialog/oauth/?'+
+		'client_id='+FacebookStuff.appId+
+		'&redirect_uri=http://apps.facebook.com/social-snakes/'+
+		'&scope='+FacebookStuff.scope
+	;
+	window.location.href = url;
+}
+
 /*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   */
 					
 function scoreboardShow() {
