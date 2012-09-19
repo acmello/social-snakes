@@ -62,7 +62,7 @@ function authUser() {
 	var url = ''+
 		'http://www.facebook.com/dialog/oauth/?'+
 		'client_id='+FacebookStuff.appId+
-		'&redirect_uri=http://apps.facebook.com/social-snakes/'+
+		'&redirect_uri=https://apps.facebook.com/social-snakes/'+
 		'&scope='+FacebookStuff.scope
 	;
 	window.location.href = url;
