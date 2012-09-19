@@ -17,7 +17,7 @@ ul {
 
 .main_score_style {
 	float: left;
-	width: 250px;
+	width: 275px;
 	height: 395px;
 	border: 1px solid #E2E2E2;
 	margin-bottom: 15px;
@@ -25,7 +25,7 @@ ul {
 
 .main_score_add_style {
 	float: left;
-	width: 242px;
+	width: 267px;
 	height: 60px;
 	border: 1px solid #E2E2E2;
 	margin-bottom: 20px;
@@ -52,7 +52,7 @@ ul {
 	color: rgb(39, 91, 152);
 	background-color: rgb(229, 235, 242);
 	float: left;
-	width: 140px;
+	width: 165px;
 	border-right: 1px solid #E2E2E2;
 	padding: 4px;
 	height: 20px;
