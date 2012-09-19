@@ -2,6 +2,7 @@ function FacebookStuff() {
 }
 
 FacebookStuff.refreshScores = true;
+FacebookStuff.dummyScores = false; // used only to take printscreens
 
 FacebookStuff.appId = '476027365749233';
 FacebookStuff.scope = 'publish_actions';
@@ -72,7 +73,6 @@ function authUser() {
 					
 function scoreboardShow() {
 	FB.api(
-		// '/me/scores',
 		'/'+FacebookStuff.appId+'/scores',
 		'get',
 		{ access_token: FacebookStuff.accessToken },
@@ -110,6 +110,7 @@ function scoreboardShow() {
 				;
 				//
 				var data = response.data;
+				//
 				var length = data.length;
 				for ( var i = 0 ; i < length ; i++ ) {
 					var user = data[i];
@@ -131,6 +132,65 @@ function scoreboardShow() {
 						FacebookStuff.score = user.score;
 					}
 				}
+				//
+				if ( FacebookStuff.dummyScores ) {
+					list.html('');
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 659928016);
+					playerLine = playerLine.replace('{name}', "John Doe");
+					playerLine = playerLine.replace('{score}', 900);
+					playerLine = playerLine.replace('{class}', ' bold');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 1283469000);
+					playerLine = playerLine.replace('{name}', "Mary Smith");
+					playerLine = playerLine.replace('{score}', 760);
+					playerLine = playerLine.replace('{class}', '');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 1368281217);
+					playerLine = playerLine.replace('{name}', "Lorem Ipsum");
+					playerLine = playerLine.replace('{score}', 505);
+					playerLine = playerLine.replace('{class}', '');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 1368281218);
+					playerLine = playerLine.replace('{name}', "Joe Foo Bar");
+					playerLine = playerLine.replace('{score}', 335);
+					playerLine = playerLine.replace('{class}', '');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 4569875215);
+					playerLine = playerLine.replace('{name}', "F0r3v3r Al0n3");
+					playerLine = playerLine.replace('{score}', 150);
+					playerLine = playerLine.replace('{class}', '');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+					//
+					playerLine = playerTemplate;
+					playerLine = playerLine.replace('{p}', i + 1);
+					playerLine = playerLine.replace('{id}', 35895622);
+					playerLine = playerLine.replace('{name}', "nonononononoonononn");
+					playerLine = playerLine.replace('{score}', 5);
+					playerLine = playerLine.replace('{class}', '');
+					playerLine = playerLine.replace('{class}', '');
+					list.append(playerLine);
+				}
+				//
 			}
 			//
 			if ( FacebookStuff.refreshScores ) {

@@ -163,11 +163,9 @@ function Game(canvas, ctx) {
     var img = $("#img_gameover");
     img.show();
     //
-    score = 0;
     if (confirm("You're dead dude! Wanna start it over?")) {
       game.init();
     } else {
-      score = undefined
       window.location.href = ".";
     }
   };
