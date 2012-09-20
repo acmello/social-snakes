@@ -12,6 +12,8 @@ function Game(canvas, ctx) {
   this.scoreIncrement = 5;
   this.speedDecrement = 2;
 
+  this.proccessing = false; // to prevent main loop be interrupted by an event and stuff
+
   var game = this;
   var snake;
   var food;
@@ -149,12 +151,16 @@ function Game(canvas, ctx) {
 
   this.updateAndRender = function() {
     gameLoop = setInterval(function() {
-      if (snake.collidesWith(food)) {
-        food.generateRandomPosition();
-        game.scoreHandler();
+      if ( ! game.proccessing ) {
+        game.proccessing = true;
+        if (snake.collidesWith(food)) {
+          food.generateRandomPosition();
+          game.scoreHandler();
+        }
+        food.draw();
+        snake.move();
+        game.proccessing = false;
       }
-      food.draw();
-      snake.move();
     }, speed);
   };
 
