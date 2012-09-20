@@ -226,7 +226,7 @@ function scoreboardShow() {
 /*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   */
 
 function scoreboardWrite(_score) {
-	if ( _score > FacebookStuff.score ) {
+	if ( _score > 0 && _score > FacebookStuff.score ) {
 		FB.api(
 			'/'+FacebookStuff.userID+'/scores',
 			'post',
