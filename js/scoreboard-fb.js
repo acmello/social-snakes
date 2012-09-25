@@ -151,7 +151,7 @@ function scoreboardShow() {
 							FacebookStuff.score = user.score;
 							//
 							if ( i < FacebookStuff.MAX_SCORES ) {
-								break;
+								// do nothing!
 							} else {
 								var playerLine = playerTemplate;
 								playerLine = playerLine.replace('{id}', user.user.id);
