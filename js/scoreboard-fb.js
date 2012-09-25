@@ -10,8 +10,8 @@ FacebookStuff.userID = 0;
 FacebookStuff.accessToken = null;
 FacebookStuff.score = 0;
 
-FacebookStuff.MAX_SCORES = 11;
-FacebookStuff.MAX_PLAYER_NAME = 21;
+FacebookStuff.MAX_SCORES = 14;
+FacebookStuff.MAX_PLAYER_NAME = 24;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -130,24 +130,38 @@ function scoreboardShow() {
 					var data = response.data;
 					//
 					var length = data.length;
-					for ( var i = 0 ; i < length && i < FacebookStuff.MAX_SCORES ; i++ ) {
+					for ( var i = 0 ; i < length ; i++ ) {
 						var user = data[i];
 						//
-						var playerLine = playerTemplate;
-						playerLine = playerLine.replace('{p}', i + 1);
-						playerLine = playerLine.replace('{id}', user.user.id);
-						playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
-						playerLine = playerLine.replace('{score}', user.score);
-						if ( user.user.id == FacebookStuff.userID ) {
-							playerLine = playerLine.replace('{class}', ' bold');
-						} else {
-							playerLine = playerLine.replace('{class}', '');
+						if ( i < FacebookStuff.MAX_SCORES - ( FacebookStuff.userID == 0 ? 0 : 1 ) ) {
+							var playerLine = playerTemplate;
+							playerLine = playerLine.replace('{id}', user.user.id);
+							playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
+							playerLine = playerLine.replace('{score}', user.score);
+							if ( user.user.id == FacebookStuff.userID ) {
+								playerLine = playerLine.replace('{class}', ' bold');
+							} else {
+								playerLine = playerLine.replace('{class}', '');
+							}
+							//
+							list.append(playerLine);
 						}
-						//
-						list.append(playerLine);
 						//
 						if ( user.user.id == FacebookStuff.userID ) {
 							FacebookStuff.score = user.score;
+							//
+							if ( i < FacebookStuff.MAX_SCORES ) {
+								break;
+							} else {
+								var playerLine = playerTemplate;
+								playerLine = playerLine.replace('{id}', user.user.id);
+								playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
+								playerLine = playerLine.replace('{score}', user.score);
+								playerLine = playerLine.replace('{class}', ' bold');
+								//
+								list.append(playerLine);
+								break;
+							}
 						}
 					}
 					//
@@ -207,6 +221,79 @@ function scoreboardShow() {
 						playerLine = playerLine.replace('{class}', '');
 						playerLine = playerLine.replace('{class}', '');
 						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
+						playerLine = playerTemplate;
+						playerLine = playerLine.replace('{p}', i + 1);
+						playerLine = playerLine.replace('{id}', 35895622);
+						playerLine = playerLine.replace('{name}', "nonononononoonononn");
+						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{class}', '');
+						list.append(playerLine);
+						//
 					}
 					//
 				}
@@ -252,6 +339,33 @@ function scoreboardWrite(_score) {
 			}
 		);
 	}
+}
+
+function scoreboardDelete() {
+	FB.api(
+		'/'+FacebookStuff.userID+'/scores',
+		'delete',
+		{ access_token: FacebookStuff.accessToken },
+		function(response) {
+			if ( response === true ) {
+				//
+				console.log('[success] scoreboardDelete response: ' + response);
+				//				
+			} else if ( ! response ) {
+				//
+				console.log('[error] scoreboardDelete response: ' + response);
+				//
+			} else if ( response.error ) {
+				//
+				console.log('[error] scoreboardDelete response.error: ' + response.error);
+				//
+			} else {
+				//
+				console.log('[error] scoreboardDelete response: ' + response);
+				//				
+			}
+		}
+	);
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */

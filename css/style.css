@@ -118,8 +118,8 @@ body {
 .main_img_style {
 	float: left;
 	position: relative;
-	right: 390px;
-	bottom: 190px;
+	right: -170px;
+	bottom: 290px;
 	width: 195px;
 	height: 67px;
 }
@@ -127,8 +127,8 @@ body {
 .gameover_img_style {
 	float: left;
 	position: relative;
-	right: 460px;
-	bottom: 270px;
+	right: 110px;
+	bottom: 290px;
 	width: 195px;
 	height: 67px;
 }
