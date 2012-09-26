@@ -12,8 +12,6 @@ function Game(canvas, ctx) {
   this.scoreIncrement = 5;
   this.speedDecrement = 2;
 
-  this.proccessing = false; // to prevent main loop be interrupted by an event and stuff
-
   var game = this;
   var snake;
   var food;
@@ -45,52 +43,66 @@ function Game(canvas, ctx) {
 
     // game loop, responsible to move stuff in a 60 FPS
     game.updateAndRender();
+
+    // calling the event handler to control keyboard
+    game.addEventHandler();
   };
 
-  $(document).bind("keydown", function(ev) {
+
+  this.addEventHandler = function() {
+    $(document).bind("keydown", function(ev) {
+
+      // remove handler to avoid second call
+      game.removeEventHandler();
+
+      var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
+      // if its paused and key code is not space 
+      // should prevent the movement.
+      if (game.paused && keyCode !== 32) return
+
+      switch (keyCode) {
+        case 37:
+          if (snake.direction === 'right') {
+            return false;
+          }
+          snake.direction = 'left';
+          break;
+
+        case 38:
+          if (snake.direction === 'down') {
+            return false;
+          }
+          snake.direction = 'up';
+          break;
+
+        case 39:
+          if (snake.direction === 'left') {
+            return false;
+          }
+          snake.direction = 'right';
+          break;
+        
+        case 40:
+          if (snake.direction === 'up') {
+            return false;
+          }
+          snake.direction = 'down';
+          break;
+
+        case 32:
+          game.paused = !game.paused;
+          game.pause();
+          break;
+      }
+
+      ev.preventDefault();
     
-    var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-    // if its paused and key code is not space 
-    // should prevent the movement.
-    if (game.paused && keyCode !== 32) return
+    });
+  };
 
-    switch (keyCode) {
-      case 37:
-        if (snake.direction === 'right') {
-          return false;
-        }
-        snake.direction = 'left';
-        break;
-
-      case 38:
-        if (snake.direction === 'down') {
-          return false;
-        }
-        snake.direction = 'up';
-        break;
-
-      case 39:
-        if (snake.direction === 'left') {
-          return false;
-        }
-        snake.direction = 'right';
-        break;
-      
-      case 40:
-        if (snake.direction === 'up') {
-          return false;
-        }
-        snake.direction = 'down';
-        break;
-
-      case 32:
-        game.paused = !game.paused;
-        game.pause();
-        break;
-    }
-
-    ev.preventDefault();
-  });
+  this.removeEventHandler = function() {
+    $(document).unbind("keydown");
+  };
 
   this.gameOver = function() {
     clearInterval(gameLoop);
@@ -151,16 +163,15 @@ function Game(canvas, ctx) {
 
   this.updateAndRender = function() {
     gameLoop = setInterval(function() {
-      if ( ! game.proccessing ) {
-        game.proccessing = true;
-        if (snake.collidesWith(food)) {
-          food.generateRandomPosition();
-          game.scoreHandler();
-        }
-        food.draw();
-        snake.move();
-        game.proccessing = false;
+      if (snake.collidesWith(food)) {
+        food.generateRandomPosition();
+        game.scoreHandler();
       }
+      food.draw();
+      snake.move();
+      // add event handler again:
+      // todo (AM)
+      game.addEventHandler();
     }, speed);
   };
 
