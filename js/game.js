@@ -18,8 +18,8 @@ function Game(canvas, ctx) {
   var score;
   var speed = 100;
   var gameLoop;
-  var paused = true;
-  var allowPressKeys = true;
+  var paused = false;
+  var lastPressedKey = undefined;
   
   var scoreElement = document.getElementById("score");
 
@@ -52,56 +52,17 @@ function Game(canvas, ctx) {
   this.addEventHandler = function() {
     $(document).bind("keydown", function(ev) {
 
-      // remove handler to avoid second call
-      game.removeEventHandler();
+      var validKeys = [ 32, 37, 38, 39, 40 ];
 
       var keyCode = (ev.keyCode ? ev.keyCode : ev.which);
-      // if its paused and key code is not space 
-      // should prevent the movement.
-      if (game.paused && keyCode !== 32) return
 
-      switch (keyCode) {
-        case 37:
-          if (snake.direction === 'right') {
-            return false;
-          }
-          snake.direction = 'left';
-          break;
+      game.lastPressedKey = keyCode;
 
-        case 38:
-          if (snake.direction === 'down') {
-            return false;
-          }
-          snake.direction = 'up';
-          break;
-
-        case 39:
-          if (snake.direction === 'left') {
-            return false;
-          }
-          snake.direction = 'right';
-          break;
-        
-        case 40:
-          if (snake.direction === 'up') {
-            return false;
-          }
-          snake.direction = 'down';
-          break;
-
-        case 32:
-          game.paused = !game.paused;
-          game.pause();
-          break;
+      if ( validKeys.indexOf(game.lastPressedKey) > -1 ) {
+        ev.preventDefault();
       }
-
-      ev.preventDefault();
     
     });
-  };
-
-  this.removeEventHandler = function() {
-    $(document).unbind("keydown");
   };
 
   this.gameOver = function() {
@@ -139,16 +100,13 @@ function Game(canvas, ctx) {
   };
 
   this.pause = function() {
-    allowPressKeys = !allowPressKeys;
     var img = $("#img_pause");
     if (game.paused) {
       game.playPauseSound();
       img.fadeIn(100);
-      clearInterval(gameLoop);
     } else {
       game.playUnpauseSound();
       img.fadeOut(100);
-      game.updateAndRender();
     }
   };
 
@@ -163,15 +121,42 @@ function Game(canvas, ctx) {
 
   this.updateAndRender = function() {
     gameLoop = setInterval(function() {
-      if (snake.collidesWith(food)) {
-        food.generateRandomPosition();
-        game.scoreHandler();
+      var keyCode = game.lastPressedKey;
+      if ( ! game.paused ) {
+        switch (keyCode) {
+          case 37:
+            if (snake.direction != 'right') {
+              snake.direction = 'left';
+            }
+            break;
+          case 38:
+            if (snake.direction != 'down') {
+              snake.direction = 'up';
+            }
+            break;
+          case 39:
+            if (snake.direction != 'left') {
+              snake.direction = 'right';
+            }
+            break;
+          case 40:
+            if (snake.direction != 'up') {
+              snake.direction = 'down';
+            }
+            break;
+        }
+        if (snake.collidesWith(food)) {
+          food.generateRandomPosition();
+          game.scoreHandler();
+        }
+        food.draw();
+        snake.move();
       }
-      food.draw();
-      snake.move();
-      // add event handler again:
-      // todo (AM)
-      game.addEventHandler();
+      if ( keyCode == 32 ) {
+        game.paused = !game.paused;
+        game.pause();
+      }
+      game.lastPressedKey = undefined;
     }, speed);
   };
 
