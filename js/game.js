@@ -12,6 +12,7 @@ function Game(canvas, ctx) {
   this.scoreIncrement = 5;
   this.speedDecrement = 2;
 
+  
   var game = this;
   var snake;
   var food;
@@ -21,6 +22,15 @@ function Game(canvas, ctx) {
   var paused = false;
   var lastPressedKey = undefined;
   
+  var userLevel = (function(userId){
+    // TODO search for the current user scorelevel
+    // by passing his id a returning a map with his
+    // current level and how much 'starts' he got 
+    // already
+
+    return 1;
+  })(1); 
+
   var scoreElement = document.getElementById("score");
 
   this.init = function() {
@@ -48,6 +58,7 @@ function Game(canvas, ctx) {
     game.addEventHandler();
   };
 
+  };
 
   this.addEventHandler = function() {
     $(document).bind("keydown", function(ev) {
@@ -164,16 +175,37 @@ function Game(canvas, ctx) {
     //
     var img = $("#img_gameover");
     img.show();
+
+    $("#dialog").dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+          game.init();
+        },
+        Nope: function() {
+          $( this ).dialog( "close" );
+          window.location.href = "."; 
+        }
+      }
+    });
+    
     //
     if (confirm("You're dead dude! Wanna start it over?")) {
       game.init();
     } else {
       window.location.href = ".";
     }
+    //if (confirm("You're dead dude! Wanna start it over?")) {
+    //  game.init();
+    //} else {
+    //  
+    //}
   };
 
   this.sendScore = function() {
     var score = scoreElement.innerHTML;
     scoreboardWrite(score);
   }
+
 }

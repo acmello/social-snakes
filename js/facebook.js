@@ -12,10 +12,6 @@ FBCurrentUser.fbId = -1;
 function facebookInit() {
   if(typeof(FB) != 'undefined') {
 
-
-    alert( 2 );
-
-
     FB.init({
       appId: '476027365749233',
       cookie: true,
