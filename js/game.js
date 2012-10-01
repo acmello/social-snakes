@@ -11,7 +11,6 @@ function Game(canvas, ctx) {
   this.gridSize = 10;
   this.scoreIncrement = 5;
   this.speedDecrement = 2;
-
   
   var game = this;
   var snake;
@@ -21,7 +20,6 @@ function Game(canvas, ctx) {
   var gameLoop;
   var paused = false;
   var lastPressedKey = undefined;
-  
   var userLevel = (function(userId){
     // TODO search for the current user scorelevel
     // by passing his id a returning a map with his
@@ -56,7 +54,6 @@ function Game(canvas, ctx) {
 
     // calling the event handler to control keyboard
     game.addEventHandler();
-  };
 
   };
 
@@ -191,11 +188,6 @@ function Game(canvas, ctx) {
     });
     
     //
-    if (confirm("You're dead dude! Wanna start it over?")) {
-      game.init();
-    } else {
-      window.location.href = ".";
-    }
     //if (confirm("You're dead dude! Wanna start it over?")) {
     //  game.init();
     //} else {
