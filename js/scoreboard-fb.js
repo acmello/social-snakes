@@ -28,16 +28,14 @@ Utils.trunc = function(str, lim) {
 }
 
 Utils.calculateLevel = function(score) {
-	score = isNaN( score ) ? 0 : score;
-	if( score <= 500 ) {
-		score = 1;
-	} else if ( score <= 750 ) {
-		score = 2;
-	} else if ( score <= 1500 ) {
-		score = 3;
-	}
-
-	return score;
+	var level;
+	
+	if ( score < 500 ) level = 0;
+	else if ( escore < 750 ) level = 1;
+	else if ( escore < 1500 ) level = 2;
+	else level = 3:
+	
+	return level;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -150,7 +148,7 @@ function scoreboardShow() {
 						if ( i < FacebookStuff.MAX_SCORES - control ) {
 							var playerLine = playerTemplate;
 							playerLine = playerLine.replace('{id}', user.user.id);
-							playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
+							playerLine = playerLine.replace('{name}', Utils.trunc(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
 							playerLine = playerLine.replace('{score}', user.score);
 							if ( user.user.id == FacebookStuff.userID ) {
 								playerLine = playerLine.replace('{class}', ' bold');
@@ -370,7 +368,7 @@ function scoreboardShowMe() {
 						//
 						var playerLine = playerTemplate;
 						playerLine = playerLine.replace('{id}', user.user.id);
-						playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
+						playerLine = playerLine.replace('{name}', Utils.trunc(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
 						playerLine = playerLine.replace('{score}', user.score);
 						if ( user.user.id == FacebookStuff.userID ) {
 							playerLine = playerLine.replace('{class}', ' bold');
