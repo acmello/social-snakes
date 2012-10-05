@@ -19,12 +19,25 @@ FacebookStuff.MAX_PLAYER_NAME = 24; // chars
 function Utils() {
 }
 
-Utils.trunk = function(str, lim) {
+Utils.trunc = function(str, lim) {
 	if ( str.length < lim ) {
 		return str;
 	} else {
 		return str.substr(0, lim) + '...';
 	}
+}
+
+Utils.calculateLevel = function(score) {
+	score = isNaN( score ) ? 0 : score;
+	if( score <= 500 ) {
+		score = 1;
+	} else if ( score <= 750 ) {
+		score = 2;
+	} else if ( score <= 1500 ) {
+		score = 3;
+	}
+
+	return score;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */

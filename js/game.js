@@ -20,15 +20,6 @@ function Game(canvas, ctx) {
   var gameLoop;
   var paused = false;
   var lastPressedKey = undefined;
-  var userLevel = (function(userId){
-    // TODO search for the current user scorelevel
-    // by passing his id a returning a map with his
-    // current level and how much 'starts' he got 
-    // already
-
-    return 1;
-  })(1); 
-
   var scoreElement = document.getElementById("score");
 
   this.init = function() {
@@ -186,13 +177,6 @@ function Game(canvas, ctx) {
         }
       }
     });
-    
-    //
-    //if (confirm("You're dead dude! Wanna start it over?")) {
-    //  game.init();
-    //} else {
-    //  
-    //}
   };
 
   this.sendScore = function() {
