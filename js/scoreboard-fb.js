@@ -29,12 +29,15 @@ Utils.trunc = function(str, lim) {
 
 Utils.calculateLevel = function(score) {
 	var level;
-	
-	if ( score < 500 ) level = 0;
-	else if ( score < 750 ) level = 1;
-	else if ( score < 1500 ) level = 2;
-	else level = 3;
-	
+	if ( score < 500 ) {
+		level = 0;
+	} else if ( score < 750 ) {
+		level = 1;
+	} else if ( escore < 1500 ) {
+		level = 2;
+	} else {
+		level = 3;
+	}
 	return level;
 }
 
