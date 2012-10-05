@@ -135,7 +135,6 @@ function scoreboardShow() {
 						'<div class="score_score">'+
 							'{score}'+
 						'</div>'+
-						'<div class="score_star_{level}"></div>'+
 						'<br clear="all" />'
 					;
 					//
@@ -156,7 +155,6 @@ function scoreboardShow() {
 							} else {
 								playerLine = playerLine.replace('{class}', '');
 							}
-							playerLine = playerLine.replace('{level}', Utils.calculateLevel(user.score));
 							//
 							list.append(playerLine);
 						}
