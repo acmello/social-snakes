@@ -182,7 +182,7 @@ function Game(canvas, ctx) {
           $( this ).dialog( "close" );
           window.location.href = "."; 
         }
-      }
+      }, open: function() { $(".ui-dialog-titlebar-close").hide(); }
     });
   };
 

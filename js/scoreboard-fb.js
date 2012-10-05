@@ -11,7 +11,7 @@ FacebookStuff.accessToken = null;
 FacebookStuff.score = 0;
 
 FacebookStuff.MAX_SCORES = 14; // players
-FacebookStuff.MAX_PLAYER_NAME = 24; // chars
+FacebookStuff.MAX_PLAYER_NAME = 18; // chars
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -29,13 +29,20 @@ Utils.trunc = function(str, lim) {
 
 Utils.calculateLevel = function(score) {
 	var level;
-	
-	if ( score < 500 ) level = 0;
-	else if ( score < 750 ) level = 1;
-	else if ( score < 1500 ) level = 2;
-	else level = 3;
-	
+	if ( score < 500 ) {
+		level = 0;
+	} else if ( score < 750 ) {
+		level = 1;
+	} else if ( score < 1500 ) {
+		level = 2;
+	} else {
+		level = 3;
+	}
 	return level;
+}
+
+Utils.dummyScore = function() {
+	return Math.round( (Math.random()*10000) % 2000 );
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -135,6 +142,7 @@ function scoreboardShow() {
 						'<div class="score_score">'+
 							'{score}'+
 						'</div>'+
+						'<div class="score_star_{level}"></div>'+
 						'<br clear="all" />'
 					;
 					//
@@ -155,6 +163,7 @@ function scoreboardShow() {
 							} else {
 								playerLine = playerLine.replace('{class}', '');
 							}
+							playerLine = playerLine.replace('{level}', Utils.calculateLevel(user.score));
 							//
 							list.append(playerLine);
 						}
@@ -162,15 +171,6 @@ function scoreboardShow() {
 						if ( user.user.id == FacebookStuff.userID ) {
 							FacebookStuff.score = user.score;
 							control = 0; // current player found
-
-							// var playerLine = playerTemplate;
-							// playerLine = playerLine.replace('{id}', user.user.id);
-							// playerLine = playerLine.replace('{name}', Utils.trunk(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
-							// playerLine = playerLine.replace('{score}', user.score);
-							// playerLine = playerLine.replace('{class}', ' bold');
-							// //
-							// list.append(playerLine);
-
 						}
 					}
 					//
@@ -180,131 +180,146 @@ function scoreboardShow() {
 					//
 					if ( FacebookStuff.dummyScores ) {
 						list.html('');
+						var dummyScore;
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 659928016);
 						playerLine = playerLine.replace('{name}', "John Doe");
-						playerLine = playerLine.replace('{score}', 900);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', ' bold');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 1283469000);
 						playerLine = playerLine.replace('{name}', "Mary Smith");
-						playerLine = playerLine.replace('{score}', 760);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 1368281217);
 						playerLine = playerLine.replace('{name}', "Lorem Ipsum");
-						playerLine = playerLine.replace('{score}', 505);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 1368281218);
 						playerLine = playerLine.replace('{name}', "Joe Foo Bar");
-						playerLine = playerLine.replace('{score}', 335);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 4569875215);
 						playerLine = playerLine.replace('{name}', "F0r3v3r Al0n3");
-						playerLine = playerLine.replace('{score}', 150);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
+						dummyScore = Utils.dummyScore();
 						playerLine = playerTemplate;
 						playerLine = playerLine.replace('{p}', i + 1);
 						playerLine = playerLine.replace('{id}', 35895622);
 						playerLine = playerLine.replace('{name}', "nonononononoonononn");
-						playerLine = playerLine.replace('{score}', 5);
+						playerLine = playerLine.replace('{score}', dummyScore);
 						playerLine = playerLine.replace('{class}', '');
-						playerLine = playerLine.replace('{class}', '');
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(dummyScore));
 						list.append(playerLine);
 						//
 					}
@@ -357,6 +372,7 @@ function scoreboardShowMe() {
 						'<div class="score_score">'+
 							'{score}'+
 						'</div>'+
+						'<div class="score_star_{level}"></div>'+
 						'<br clear="all" />'
 					;
 					//
@@ -375,6 +391,7 @@ function scoreboardShowMe() {
 						} else {
 							playerLine = playerLine.replace('{class}', ''); // impossible!!!
 						}
+						playerLine = playerLine.replace('{level}', Utils.calculateLevel(user.score));
 						//
 						list.append(playerLine);
 						//
