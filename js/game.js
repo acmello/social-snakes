@@ -71,7 +71,6 @@ function Game(canvas, ctx) {
     speed = 100;
     food.clear();
     snake.clear();
-    game.sendScore();
     setTimeout(function(){
       game.sendScore();
     }, 0);
