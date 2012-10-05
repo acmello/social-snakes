@@ -52,7 +52,7 @@ ul {
 	color: rgb(39, 91, 152);
 	background-color: rgb(229, 235, 242);
 	float: left;
-	width: 165px;
+	width: 135px;
 	border-right: 1px solid #E2E2E2;
 	padding: 4px;
 	height: 20px;
@@ -72,6 +72,22 @@ ul {
 	line-height: 20px;
 	vertical-align: middle;
 	text-align: right;
+	border-right: 1px solid #E2E2E2;
+}
+
+.score_star_0 { background: url(../img/star-0.png); }
+.score_star_1 { background: url(../img/star-1.png); }
+.score_star_2 { background: url(../img/star-2.png); }
+.score_star_3 { background: url(../img/star-3.png); }
+
+.score_star_0, .score_star_1, .score_star_2, .score_star_3 {
+	float: left;
+	padding: 4px;
+	width: 20px;
+	height: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: rgb(229, 235, 242);
 }
 
 .bold {

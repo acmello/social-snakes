@@ -1,7 +1,7 @@
 function FacebookStuff() {
 }
 
-FacebookStuff.refreshScores = true; // must be TRUE in production!!!
+FacebookStuff.refreshScores = ! true; // must be TRUE in production!!!
 FacebookStuff.dummyScores = false; // used only to take printscreens // must be FALSE in production!!!
 
 FacebookStuff.appId = '476027365749233';
@@ -11,7 +11,7 @@ FacebookStuff.accessToken = null;
 FacebookStuff.score = 0;
 
 FacebookStuff.MAX_SCORES = 14; // players
-FacebookStuff.MAX_PLAYER_NAME = 24; // chars
+FacebookStuff.MAX_PLAYER_NAME = 18; // chars
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -31,9 +31,9 @@ Utils.calculateLevel = function(score) {
 	var level;
 	
 	if ( score < 500 ) level = 0;
-	else if ( escore < 750 ) level = 1;
-	else if ( escore < 1500 ) level = 2;
-	else level = 3:
+	else if ( score < 750 ) level = 1;
+	else if ( score < 1500 ) level = 2;
+	else level = 3;
 	
 	return level;
 }
@@ -135,6 +135,7 @@ function scoreboardShow() {
 						'<div class="score_score">'+
 							'{score}'+
 						'</div>'+
+						'<div class="score_star_{level}"></div>'+
 						'<br clear="all" />'
 					;
 					//
@@ -155,6 +156,7 @@ function scoreboardShow() {
 							} else {
 								playerLine = playerLine.replace('{class}', '');
 							}
+							playerLine = playerLine.replace('{level}', Utils.calculateLevel(user.score));
 							//
 							list.append(playerLine);
 						}
