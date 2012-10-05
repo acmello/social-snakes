@@ -33,7 +33,6 @@ Utils.calculateLevel = function(score) {
 	if ( score < 500 ) level = 0;
 	else if ( escore < 750 ) level = 1;
 	else if ( escore < 1500 ) level = 2;
-	else level = 3:
 	else level = 3;
 	
 	return level;
