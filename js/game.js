@@ -96,6 +96,9 @@ function Game(canvas, ctx) {
     scoreElement.innerHTML = score;
     // send to facebook
     game.sendScore();
+
+    var level = Utils.calculateLevel(score); 
+    game.speedDecrement = game.speedDecrement * level+1; 
   };
 
   this.pause = function() {
