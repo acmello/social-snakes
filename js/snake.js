@@ -7,6 +7,7 @@ function Snake(game) {
   var snake = this;
 
   var length = 3;
+  var length = 5;
 
   this.draw = function() {
     if (this.snakeBody.some(snake.hasEatenItself)) {
@@ -82,6 +83,8 @@ function Snake(game) {
       // if there's nothing in the body, returns the current position to be cleaned
       var itemRemoved = this.snakeBody == undefined ? [
         [snake.x, snake.y]
+      var itemRemoved = this.snakeBody.length == 0 ? [
+        [0, 0]
       ] : this.snakeBody.shift();
       game.ctx.clearRect(itemRemoved[0], itemRemoved[1], game.gridSize, game.gridSize);
     }

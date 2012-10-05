@@ -11,6 +11,7 @@ function Game(canvas, ctx) {
   this.gridSize = 10;
   this.scoreIncrement = 5;
   this.speedDecrement = 2;
+  this.snake;
   
   var game = this;
   var snake;
@@ -24,6 +25,7 @@ function Game(canvas, ctx) {
 
   this.init = function() {
     snake = new Snake(game);
+    this.snake = snake;
     food = new Food(game);
     game.startGame();
     var img = $("#img_gameover");
@@ -70,6 +72,9 @@ function Game(canvas, ctx) {
     food.clear();
     snake.clear();
     game.sendScore();
+    setTimeout(function(){
+      game.sendScore();
+    }, 0);
     game.showMessage();
   };
 
