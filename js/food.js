@@ -1,10 +1,8 @@
 function Food(game) {
   this.x = 0;
   this.y = 0;
-
   
   var food = this;
-
   
   this.generateRandomPosition = function() {
     var x = Math.floor(Math.random() * (game.canvas.width / game.gridSize)) * game.gridSize;
