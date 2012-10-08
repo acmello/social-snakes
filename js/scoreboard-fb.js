@@ -6,9 +6,9 @@ FacebookStuff.dummyScores = false; // used only to take printscreens // must be 
 
 FacebookStuff.appId = '476027365749233';
 FacebookStuff.scope = 'publish_actions';
-FacebookStuff.userID = 0;
+FacebookStuff.userID = -1;
 FacebookStuff.accessToken = null;
-FacebookStuff.score = 0;
+FacebookStuff.score = -1;
 
 FacebookStuff.MAX_SCORES = 14; // players
 FacebookStuff.MAX_PLAYER_NAME = 18; // chars
@@ -145,14 +145,20 @@ function scoreboardShow() {
 					//
 					var data = response.data;
 					//
-					var length = data.length - 1;
+					var length = data.length;
 					var maxScores = FacebookStuff.MAX_SCORES - 1;
-					for ( var i = 0 ; i < length && i < maxScores ; i++ ) {
+					for ( var i = 0, j = 0 ; i < length ; i++ ) {
 						var user = data[i];
-						scoreboardShowSinglePlayer(user);
+						if ( i < length - 1 && i < maxScores ) {
+							scoreboardShowSinglePlayer(user);
+							j++;
+						}
+						if ( user.user.id == FacebookStuff.userID ) {
+							FacebookStuff.score = user.score;
+						}
 					}
 					//
-					scoreboardShowLast(i, data);
+					scoreboardShowLast(j, data);
 					//
 					if ( FacebookStuff.dummyScores ) {
 						list.html('');
