@@ -187,10 +187,12 @@ function Game(canvas, ctx) {
 		var img = $("#img_gameover");
 		img.show();
 		//
+		var negativeResponse = true;
 		$("#dialog").dialog({
 			modal: true,
 			buttons: {
 				Ok: function() {
+					negativeResponse = false;
 					$( this ).dialog( "close" );
 					game.init();
 				},
@@ -200,7 +202,9 @@ function Game(canvas, ctx) {
 			}, open: function() {
 				$(".ui-dialog-titlebar-close").hide();
 			}, close: function() {
-				window.location.href = "."; 
+				if ( negativeResponse ) {
+					window.location.href = ".";
+				}
             }
 		});
 	};
