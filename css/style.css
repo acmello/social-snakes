@@ -6,6 +6,15 @@ body {
 	width: 850px;
 }
 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 .color {
 	color: #4a6bac;
 }

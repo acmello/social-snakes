@@ -214,7 +214,7 @@ function scoreboardShowSinglePlayer(user) {
 			'<img src="http://graph.facebook.com/{id}/picture" width="28" height="28" />'+
 		'</div>'+
 		'<div class="score_name{class}">'+
-			'{name}'+
+			'<a href="http://www.facebook.com/{id}" title="{name-full}" target="_blank">{name}</a>'+
 		'</div>'+
 		'<div class="score_score">'+
 			'{score}'+
@@ -226,8 +226,9 @@ function scoreboardShowSinglePlayer(user) {
 	var list = $('#players_and_scores');
 	//
 	var playerLine = playerTemplate;
-	playerLine = playerLine.replace('{id}', user.user.id);
+	playerLine = playerLine.replace(/{id}/g, user.user.id);
 	playerLine = playerLine.replace('{name}', Utils.trunc(user.user.name, FacebookStuff.MAX_PLAYER_NAME));
+	playerLine = playerLine.replace('{name-full}', user.user.name);
 	playerLine = playerLine.replace('{score}', user.score);
 	if ( user.user.id == FacebookStuff.userID ) {
 		playerLine = playerLine.replace('{class}', ' bold');
