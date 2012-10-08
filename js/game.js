@@ -20,6 +20,7 @@ function Game(canvas, ctx) {
 	var speed = 100;
 	var gameLoop;
 	var paused = false;
+	var end = false;
 	var lastPressedKey = undefined;
 	var scoreElement = document.getElementById("score");
 
@@ -34,13 +35,16 @@ function Game(canvas, ctx) {
 	};
 
 	this.autoPause = function() {
-		if ( !game.paused ) {
+		if ( !game.paused && !game.end ) {
 			game.paused = true;
 			game.pause();
 		}
 	}
 
 	this.startGame = function() {
+		// the game is not over
+		game.end = false;
+
 		// initialize the score with 0
 		game.scoreInit();
 
@@ -55,7 +59,6 @@ function Game(canvas, ctx) {
 
 		// calling the event handler to control keyboard
 		game.addEventHandler();
-
 	};
 
 	this.addEventHandler = function() {
@@ -76,6 +79,7 @@ function Game(canvas, ctx) {
 
 	this.gameOver = function() {
 		clearInterval(gameLoop);
+		game.end = true;
 		speed = 100;
 		food.clear();
 		snake.clear();
@@ -87,6 +91,7 @@ function Game(canvas, ctx) {
 
 	this.scoreInit = function() {
 		scoreElement.innerHTML = 0;
+		end = false;
 	}
 
 	this.scoreHandler = function() {
