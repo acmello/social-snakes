@@ -193,17 +193,19 @@ function Game(canvas, ctx) {
 			buttons: {
 				Ok: function() {
 					negativeResponse = false;
-					$( this ).dialog( "close" );
-					game.init();
+					$(this).dialog("close");
 				},
 				Nope: function() {
-					$( this ).dialog( "close" );
+					$(this).dialog("close");
 				}
 			}, open: function() {
 				$(".ui-dialog-titlebar-close").hide();
 			}, close: function() {
+				$(this).dialog("destroy");
 				if ( negativeResponse ) {
 					window.location.href = ".";
+				} else {
+					game.init();
 				}
             }
 		});
