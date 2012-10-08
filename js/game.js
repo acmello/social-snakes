@@ -45,6 +45,9 @@ function Game(canvas, ctx) {
 		// the game is not over
 		game.end = false;
 
+		// if user uses a key to restart the game, the key must not be considered
+		game.lastPressedKey = undefined;
+
 		// initialize the score with 0
 		game.scoreInit();
 
