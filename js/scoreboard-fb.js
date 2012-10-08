@@ -45,6 +45,16 @@ Utils.dummyScore = function() {
 	return Math.round( (Math.random()*10000) % 2000 );
 }
 
+Utils.LOG = false; // must be FALSE in production!!!
+
+Utils.console = {
+	log: function(msg) {
+		if ( Utils.LOG ) {
+			console.log(msg);
+		}
+	}
+}
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -59,7 +69,7 @@ function scoreboardInit() {
 			function(response) {
 				var responseStatus = response.status;
 				//
-				console.log('response.status: ' + responseStatus);
+				Utils.console.log('response.status: ' + responseStatus);
 				//
 				if ( responseStatus === 'connected' ) {
 					FacebookStuff.userID = response.authResponse.userID;
@@ -115,19 +125,19 @@ function scoreboardShow() {
 			function(response) {
 				if ( ! response ) {
 					//
-					console.log('[error] scoreboardShow response: ' + response);
+					Utils.console.log('[error] scoreboardShow response: ' + response);
 					//
 				} else if ( response.error ) {
 					//
-					console.log('[error] scoreboardShow response.error: ' + response.error);
+					Utils.console.log('[error] scoreboardShow response.error: ' + response.error);
 					//
 				} else if ( ! response.data ) {
 					//
-					console.log('[error] scoreboardShow response.data: ' + response.data);
+					Utils.console.log('[error] scoreboardShow response.data: ' + response.data);
 					//
 				} else {
 					//
-					console.log('[success] scoreboardShow response.data.length: ' + response.data.length);
+					Utils.console.log('[success] scoreboardShow response.data.length: ' + response.data.length);
 					//
 					var list = $('#players_and_scores');
 					list.fadeIn(500);
@@ -347,19 +357,19 @@ function scoreboardShowMe() {
 			function(response) {
 				if ( ! response ) {
 					//
-					console.log('[error] scoreboardShowMe response: ' + response);
+					Utils.console.log('[error] scoreboardShowMe response: ' + response);
 					//
 				} else if ( response.error ) {
 					//
-					console.log('[error] scoreboardShowMe response.error: ' + response.error);
+					Utils.console.log('[error] scoreboardShowMe response.error: ' + response.error);
 					//
 				} else if ( ! response.data ) {
 					//
-					console.log('[error] scoreboardShowMe response.data: ' + response.data);
+					Utils.console.log('[error] scoreboardShowMe response.data: ' + response.data);
 					//
 				} else {
 					//
-					console.log('[success] scoreboardShowMe response.data.length: ' + response.data.length);
+					Utils.console.log('[success] scoreboardShowMe response.data.length: ' + response.data.length);
 					//
 					var list = $('#players_and_scores');
 					var playerTemplate = ''+
@@ -417,19 +427,19 @@ function scoreboardWrite(_score) {
 			function(response) {
 				if ( response === true ) {
 					//
-					console.log('[success] scoreboardWrite response: ' + response);
+					Utils.console.log('[success] scoreboardWrite response: ' + response);
 					//				
 				} else if ( ! response ) {
 					//
-					console.log('[error] scoreboardWrite response: ' + response);
+					Utils.console.log('[error] scoreboardWrite response: ' + response);
 					//
 				} else if ( response.error ) {
 					//
-					console.log('[error] scoreboardWrite response.error: ' + response.error);
+					Utils.console.log('[error] scoreboardWrite response.error: ' + response.error);
 					//
 				} else {
 					//
-					console.log('[error] scoreboardWrite response: ' + response);
+					Utils.console.log('[error] scoreboardWrite response: ' + response);
 					//				
 				}
 			}
@@ -445,19 +455,19 @@ function scoreboardDelete() {
 		function(response) {
 			if ( response === true ) {
 				//
-				console.log('[success] scoreboardDelete response: ' + response);
+				Utils.console.log('[success] scoreboardDelete response: ' + response);
 				//				
 			} else if ( ! response ) {
 				//
-				console.log('[error] scoreboardDelete response: ' + response);
+				Utils.console.log('[error] scoreboardDelete response: ' + response);
 				//
 			} else if ( response.error ) {
 				//
-				console.log('[error] scoreboardDelete response.error: ' + response.error);
+				Utils.console.log('[error] scoreboardDelete response.error: ' + response.error);
 				//
 			} else {
 				//
-				console.log('[error] scoreboardDelete response: ' + response);
+				Utils.console.log('[error] scoreboardDelete response: ' + response);
 				//				
 			}
 		}
