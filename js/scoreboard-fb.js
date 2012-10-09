@@ -248,12 +248,12 @@ function scoreboardShowSinglePlayer(user) {
 
 /*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   */
 
-function scoreboardWrite(_score) {
-	if ( _score > 0 && _score > FacebookStuff.score ) {
+function scoreboardWrite(score) {
+	if ( score > 0 && FacebookStuff.score > -1 && score > FacebookStuff.score ) {
 		FB.api(
 			'/'+FacebookStuff.userID+'/scores',
 			'post',
-			{ access_token: FacebookStuff.accessToken, score: _score },
+			{ access_token: FacebookStuff.accessToken, score: score },
 			function(response) {
 				if ( response === true ) {
 					//
@@ -274,6 +274,10 @@ function scoreboardWrite(_score) {
 				}
 			}
 		);
+	} else {
+		//
+		console.log('[success] scoreboardWrite: no need to send' );
+		//				
 	}
 }
 
