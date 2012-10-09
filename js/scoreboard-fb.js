@@ -196,6 +196,7 @@ function scoreboardShowLast(i, data) {
 		}
 	} else {
 		user = null;
+		FacebookStuff.score = 0;
 	}
 	if ( user == null ) {
 		user = data[i];
