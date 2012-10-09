@@ -2,7 +2,7 @@ function FacebookStuff() {
 }
 
 FacebookStuff.refreshScores = true; // must be TRUE in production!!!
-FacebookStuff.dummyScores = false; // used only to take printscreens // must be FALSE in production!!!
+FacebookStuff.dummyScores = false; // must be FALSE in production!!!
 
 FacebookStuff.appId = '476027365749233';
 FacebookStuff.scope = 'publish_actions';
@@ -276,7 +276,7 @@ function scoreboardWrite(score) {
 		);
 	} else {
 		//
-		console.log('[success] scoreboardWrite: no need to send' );
+		Utils.console.log('[success] scoreboardWrite: no need to send' );
 		//				
 	}
 }
