@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Social Snakes</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"></style>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.24.custom.css"></style>
+		<script src="js/jquery-1.8.0.min.js"></script>
+		<script src="js/jquery-ui-1.8.24.custom.min.js"></script>
+		<script src="js/food.js"></script>
+		<script src="js/snake.js"></script>
+		<script src="js/game.js"></script>
+<!-- scoreboard api - ->
+		<script src="https://ssl731.websiteseguro.com/acasadossims1/zzz/acasadojava/gsb/GSB.js"></script>
+<!- - /scoreboard api -->
+<!-- custom scoreboard -->
+		<link rel="stylesheet" type="text/css" href="css/scoreboard.css"></style>
+		<!-- <script src="js/scoreboard.js"></script> -->
+		<script src="js/scoreboard-fb.js?v=2"></script>
+<!-- /custom scoreboard -->
+<!-- analytics -->
+		<script type="text/javascript">var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-35371168-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
+<!-- /analytics -->
+	</head>
+	<body>
+<!-- facebook -->
+		<div id="fb-root"></div>
+		<script src="//connect.facebook.net/en_US/all.js"></script>
+		<!-- <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=111635112345742"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script> -->
+<!-- /facebook -->
+<!-- twitter -->
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- /twitter -->
+		<div class="main_screen_style game">
+			<div id="info_score">Score: <b id="score">0</b></div>
+			<div class="center">
+				<canvas id="canvas" width="400" height="400" class="canvas_style"></canvas>
+			</div>
+			<div id="info" class="center">Press SPACE BAR to pause or unpause the game.</div>
+		</div>
+		<audio id="sound_pause" preload="auto">
+			<source src="sound/pause.mp3" type="audio/mp3" />
+			<source src="sound/pause.ogg" type="audio/ogg" />
+		</audio>
+		<audio id="sound_unpause" preload="auto">
+			<source src="sound/unpause.mp3" type="audio/mp3" />
+			<source src="sound/unpause.ogg" type="audio/ogg" />
+		</audio>
+<!-- scoreboard api -->
+		<div class="main_score_style">
+			<div class="block_header">Max Scores:</div>
+			<div id="players_and_scores">
+				<div id="loading_message">loading...</div>
+			</div>
+		</div>
+<!-- /scoreboard api -->	
+<!-- pause screen -->
+		<div class="main_img_style">
+			<img src="img/pause.png" id="img_pause"></img>
+		</div>
+		<div class="gameover_img_style">
+			<img src="img/game-over.png" id="img_gameover"></img>
+		</div>
+<!-- /pause screen -->
+		<div id="dialog" title="Dude..." style="display: none;">
+			<p>
+				<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+				It seems you just die which is kinda sad. But wait, wanna start it over?
+			</p>
+		</div>
+		<div class="fb-like" data-href="https://apps.facebook.com/social-snakes/" data-send="true" data-layout="button_count" data-width="450"></div>
+		&nbsp;
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://apps.facebook.com/social-snakes/" data-lang="en">Tweet</a>
+	</body>
+</html>

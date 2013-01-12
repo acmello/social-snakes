@@ -1,0 +1,154 @@
+body {
+	color: #666666;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 12px;
+	margin: 15px 0 0 15px;
+	width: 850px;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.color {
+	color: #4a6bac;
+}
+
+.canvas_style {
+	border: 1px solid #E2E2E2;
+	/* background-color: #F2F2F2; */
+	background-color: rgba(242, 242, 242, 0.5);
+}
+
+.how_to_play {
+	color: #555555;
+	font-size: 20px;
+}
+
+.how_to_play ul {
+	text-align: left;
+	list-style-type: none;
+}
+.center {
+	text-align: center;
+}
+
+#score {
+	padding-bottom: 10px;
+}
+
+#info {
+	padding-top: 8px;
+}
+#info_score {
+	padding-bottom: 8px;
+}
+
+.main_title {
+	padding-top: 40px;
+	padding-bottom: 70px;
+	width: 477px;
+	height: 209px;
+}
+
+.main_title_how_to_play {
+	padding-top: 20px;
+	padding-bottom: 30px;
+	width: 392px;
+	height: 69px;
+}
+
+.main_screen_style {
+	padding: 15px;
+	float: left;
+	width: 500px;
+	height: 450px;
+	border: 1px solid #E2E2E2;
+	margin-right: 15px;
+}
+
+.main_menu, .how_to_play ,.game {
+	background: url(../img/start-screen-bg.png);
+}
+
+.main_score_style {
+	float: left;
+	width: 200px;
+	height: 350px;
+	border: 1px solid #E2E2E2;
+}
+
+.block_header {
+	padding: 3px;
+	border-bottom: 1px solid #E2E2E2;
+	background-color: #F2F2F2;
+}
+
+.btn, .btn_new_game .btn_btn_how_to_play {
+	display: block;
+	text-decoration: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.btn_new_game {
+	width: 175px;
+	height: 39px;
+	background: url("../img/start-screen-btn-new-game.png");
+}
+.btn_new_game:hover {
+	background: url("../img/start-screen-btn-new-game-over.png");
+}
+
+.btn_how_to_play {
+	width: 193px;
+	height: 44px;
+	background: url("../img/start-screen-btn-how-to-play.png");
+}
+.btn_how_to_play:hover {
+	background: url("../img/start-screen-btn-how-to-play-over.png");
+}
+
+.btn_back {
+	margin-top: 86px;
+	width: 89px;
+	height: 40px;
+	background: url("../img/screen-how-to-play-btn-back.png");
+}
+.btn_back:hover {
+	background: url("../img/screen-how-to-play-btn-back-over.png");
+}
+
+.main_img_style {
+	float: left;
+	position: relative;
+	right: -170px;
+	bottom: 290px;
+	width: 195px;
+	height: 67px;
+}
+
+.gameover_img_style {
+	float: left;
+	position: relative;
+	right: 110px;
+	bottom: 290px;
+	width: 195px;
+	height: 67px;
+}
+
+#img_pause {
+	display: none;
+}
+#img_gameover {
+	display: none;
+}
+
+.how_to_play > ul {
+	padding-left: 55px;
+}
