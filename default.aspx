@@ -20,8 +20,12 @@
 	<body>
 <!-- facebook -->
 		<div id="fb-root"></div>
- 		<script src="//connect.facebook.net/en_US/all.js"></script>
+		<script src="//connect.facebook.net/en_US/all.js"></script>
+		<!-- <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=111635112345742"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script> -->
 <!-- /facebook -->
+<!-- twitter -->
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- /twitter -->
 		<div class="center main_screen_style main_menu">
 			<img class="main_title" alt="Social Snakes" src="img/start-screen-main-title.png" title="Social Snakes" /><br />
 			<a class="btn btn_new_game" href="game.html" title="start a new game"></a><br />
@@ -48,5 +52,8 @@
 		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 	</div>
 <!- - /ads -->
+		<div class="fb-like" data-href="https://apps.facebook.com/social-snakes/" data-send="true" data-layout="button_count" data-width="450"></div>
+		&nbsp;
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://apps.facebook.com/social-snakes/" data-lang="en">Tweet</a>
 	</body>
 </html>
